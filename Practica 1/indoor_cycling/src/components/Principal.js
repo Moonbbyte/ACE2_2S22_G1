@@ -11,7 +11,7 @@ export default class Principal extends Component{
         return(
             <React.Fragment>
             <header align="center"><h1>Indoor Cycling Smart </h1></header>
-            < User nameUser="JOSE PEREZ"/>
+            < User nameUser={this.props.nameUser}/>
             < Experimetos/>
             < Graficos />
             </React.Fragment> 

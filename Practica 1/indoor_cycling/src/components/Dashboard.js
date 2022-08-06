@@ -14,12 +14,14 @@ export default class Dashboard extends Component{
                                 <img id="imageCardio" className="col-3" src={require("../images/cardio.png")} />
                                 <div >
                                     <p align="center"> RITMO CARDIACO </p>
+                                    <p align="center"> {this.props.ritCard} </p>
                                 </div>
                             </div>
                             <div className="col-5">
                                 <img id="imageTemp" className="col-3" src={require("../images/temperatura.png")} />
                                 <div >
                                     <p align="center"> TEMPERATURA CORPORAL </p>
+                                    <p align="center"> {this.props.tempCor} </p>
                                 </div>
                             </div>
                         </div>
@@ -27,7 +29,8 @@ export default class Dashboard extends Component{
                         <div className="col-5"> 
                             <img id="imageQuemCal" className="col-3" src={require("../images/calquem.png")} />
                                     <div >
-                                        <p align="center"> RITMO CARDIACO </p>
+                                        <p align="center"> CALORIAS QUEMADAS </p>
+                                        <p align="center"> {this.props.calQuem} </p>
                                     </div>       
                         </div>
                     </div>

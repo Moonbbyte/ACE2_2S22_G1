@@ -12,8 +12,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" exact element={<Principal />} />
-      <Route path="/Dashboard" element ={< Dashboard />}/>
+      <Route path="/" exact element={<Principal nameUser="JOSE PEREZ"/>} />
+      <Route path="/Dashboard" element ={< Dashboard calQuem="12" tempCor="74 C" ritCard="42" />}/>
       </Routes>
     </BrowserRouter>
   );
