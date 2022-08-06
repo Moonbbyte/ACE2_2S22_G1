@@ -1,5 +1,5 @@
 body{
-  background-image: url('../Images/small-memory-8k-2a.jpg');
+  background-image: url('./images/fondo.jpg');
   height: 100vh4;
   background-size: cover;
 }
@@ -7,5 +7,31 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  
+  color: white;
+}
+#imageBiker{
+  position: relative;
+  height:80%;
+  width: 80%;
+  margin-bottom: 20px;
+}
+#User-Component{
+  position: relative;
+  width: 20%;
+  height: 320px;
+  left: 20px;
+  top: 10px;
+}
+#Exp-Component{
+  position:relative;
+  top: 50px;
+  left:45px;
+}
+
+#Graphic-Component{
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  height: 520px;
+  background-color: gray;
 }
