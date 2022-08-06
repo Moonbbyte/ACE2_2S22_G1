@@ -8,4 +8,5 @@ export default class Graficos extends Component{
                     <img width="100%" height="100%" src={require("../images/ciclismoWall.jpg")}/>
                 </div>
     }
+
 }

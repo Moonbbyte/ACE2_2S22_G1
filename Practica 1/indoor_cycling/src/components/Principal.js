@@ -6,11 +6,12 @@ import Graficos from './graficos'
 
 export default class Principal extends Component{
     
+
     render(){
         return(
             <React.Fragment>
             <header align="center"><h1>Indoor Cycling Smart </h1></header>
-            < User/>
+            < User nameUser="Jose"/>
             < Experimetos/>
             < Graficos />
             </React.Fragment> 

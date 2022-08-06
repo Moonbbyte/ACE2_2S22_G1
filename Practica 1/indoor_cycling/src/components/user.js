@@ -8,6 +8,7 @@ export default class User extends Component{
                     <img id="imageBiker" className="col-3" src={require("../images/ciclista.png")} />
                     <div >
                         <p align="center"> NOMBRE DE USUARIO </p>
+                        <p align="center">{this.props.nameUser}</p>
                     </div>
                 </div>
         
