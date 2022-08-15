@@ -5,7 +5,8 @@ import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    BarElement,
+    PointElement,
+    LineElement,
     Title,
     Tooltip,
     Legend,
@@ -14,7 +15,8 @@ import {
   ChartJS.register(
     CategoryScale,
     LinearScale,
-    BarElement,
+    PointElement,
+    LineElement,
     Title,
     Tooltip,
     Legend
@@ -27,29 +29,30 @@ import {
       },
       title: {
         display: true,
-        text: 'Chart.js Bar Chart',
+        text: 'Chart.js Line Chart',
       },
     },
   };
   
-  const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  
+  const labels = ["2022-08-15T06:00:00.000Z","2022-08-16T07:00:00.000Z",  "2022-08-16T06:00:00.000Z"];
+
   export const data = {
     labels,
     datasets: [
       {
         label: 'Dataset 1',
-        data: [1,2,3,4,5,6,7],
+        data:   [15,25,10],
+        borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
       {
         label: 'Dataset 2',
-        data: [1,2,3,4,5,6,7],
+        data:   [22,15,22],
+        borderColor: 'rgb(53, 162, 235)',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],
   };
-
 
   
 
@@ -59,7 +62,7 @@ export default class Graficos extends Component{
         return (
             <div className="col-8 container" id="Graphic-Component" align="center">
                 <div>
-                 <Bar options={options} data={data} />;
+                 <Line options={options} data={data} />;
                 </div>
                 
                
