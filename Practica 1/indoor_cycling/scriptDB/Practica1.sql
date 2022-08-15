@@ -1,5 +1,7 @@
 CREATE database Practica1_indoor;
 use Practica1_indoor;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone="+00:00";
 
 
 CREATE table Distancia (
@@ -39,7 +41,7 @@ CREATE table Frec_Card(
 
 CREATE table Temp_Corp(
 	id int auto_increment,
-    temperatura int,
-    fecha timestamp,
+    temperatura float,
+    fecha datetime,
     primary key (id)
 );
