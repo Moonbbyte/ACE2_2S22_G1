@@ -7,35 +7,35 @@ SET time_zone="+00:00";
 CREATE table Distancia (
 	id int auto_increment,
     distancia float,
-    fecha timestamp,
+    fecha datetime,
     primary key (id)
 );
 
 CREATE table Velocidad (
 	id int auto_increment,
     vel float,
-    fecha timestamp,
+    fecha datetime,
     primary key (id)
 );
 
 CREATE table Oxigeno (
 	id int auto_increment,
-    pulsoConOxigeno int,
-    fecha timestamp,
+    pulsoConOxigeno float,
+    fecha datetime,
     primary key (id)
 );
 
 CREATE TABLE Calorias (
 	id int auto_increment,
-    caloriasQuem int,
-    fecha timestamp,
+    caloriasQuem float,
+    fecha datetime,
     primary key (id)
 );
 
 CREATE table Frec_Card(
 	id int auto_increment,
-    pulsoCard int,
-    fecha timestamp,
+    pulsoCard float,
+    fecha datetime,
     primary key (id)
 );
 
