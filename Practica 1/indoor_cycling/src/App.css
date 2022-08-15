@@ -11,7 +11,7 @@ body{
 }
 #imageBiker{
   position: relative;
-  height:80%;
+  height:70%;
   width: 80%;
   margin-bottom: 20px;
 }
@@ -21,6 +21,8 @@ body{
   height: 320px;
   left: 20px;
   top: 10px;
+  background-color: #282666;
+  border-radius: 7px;
 }
 #Exp-Component{
   position:relative;
