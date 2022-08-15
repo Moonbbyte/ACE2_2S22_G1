@@ -11,6 +11,8 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
+import { Button } from "bootstrap";
+import { Data } from "./Experimentos";
   
   ChartJS.register(
     CategoryScale,
@@ -23,16 +25,50 @@ import {
   );
   export const options = {
     responsive: true,
+    scales: {
+        yAxes:{
+            grid: {
+                drawBorder: true,
+                color: '#FFFFFF',
+            },
+            ticks:{
+                beginAtZero: true,
+                color: 'white',
+                fontSize: 12,
+            }
+        },
+        xAxes: {
+            grid: {
+                drawBorder: true,
+                color: '#FFFFFF',
+            },
+            ticks:{
+                beginAtZero: true,
+                color: 'black',
+                fontSize: 12,
+            }
+        },
+    },
     plugins: {
       legend: {
         position: 'top',
+        labels: {
+            color: "white", 
+            font: {
+              size: 18
+            }
+          }
       },
       title: {
         display: true,
-        text: 'Chart.js Line Chart',
+        text: 'Calorias vs Tiempo',
+        color:"white"
+        
       },
     },
   };
+
+  
   
   const labels = ["2022-08-15T06:00:00.000Z","2022-08-16T07:00:00.000Z",  "2022-08-16T06:00:00.000Z"];
 
@@ -40,35 +76,65 @@ import {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: 'Titulo',
         data:   [15,25,10],
         borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: 'Dataset 2',
-        data:   [22,15,22],
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
+        backgroundColor: 'rgba(255, 99, 132,1)',
+        color:"white"
+        
+      }
     ],
   };
 
   
-
+  export const UpdateChartjs=function(dataExp){
+    options.plugins.title.text=dataExp[0]
+    data.datasets[0].label=dataExp[1]
+    data.datasets[0].data=dataExp[2]
+    data.labels=dataExp[3]
+    //[titleG,parametroName,Parametros,Fechas]
+    return data
+  }
+  export const UpdateChartjs2=function(){
+    return options
+  }
 
 export default class Graficos extends Component{
+  constructor() {
+    super();
+    this.state={
+        options:options,
+        Data:data,
+    }
+  }
     render(){
         return (
-            <div className="col-8 container" id="Graphic-Component" align="center">
+            <div>
+                <button onClick={()=>this.Actualizar()}>Actualizar</button>
+                <div className="col-8  container" id="Graphic-Component" align="center">
                 <div>
-                 <Line options={options} data={data} />;
+                 <Line options={this.state.options} data={this.state.Data} />;
+                </div>     
                 </div>
-                
-               
-                    
             </div>
+            
         ); 
     }
+  
+    componentDidMount() {
+      this.setState({
+        Data: UpdateChartjs( this.props.dataExp),
+        options:UpdateChartjs2(this.props.dataExp)
+      })
+    }
+  
+    Actualizar(){
+      this.setState({
+        Data: UpdateChartjs( this.props.dataExp),
+        options:UpdateChartjs2(this.props.dataExp)
+      })
+      console.log(this.state.Data)
+    }
+    
 
 }

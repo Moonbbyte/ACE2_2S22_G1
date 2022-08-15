@@ -13,6 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route path="/" exact element={<Principal nameUser="JOSE PEREZ"/>} />
+      <Route path="/:data" exact element={<Principal nameUser="JOSE PEREZ"/>} />
       <Route path="/Dashboard" element ={< Dashboard calQuem="12" tempCor="74 C" ritCard="42" />}/>
       </Routes>
     </BrowserRouter>
