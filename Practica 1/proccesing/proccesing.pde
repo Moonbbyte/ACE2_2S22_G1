@@ -7,7 +7,7 @@ termometro ti=new termometro();
 frecuencia fi=new frecuencia();
 
 void setup(){
-  port = new Serial(this, "COM4", 9600);
+  port = new Serial(this, "COM3", 9600);
   size(600,600);
   ti.setDiamAlto(70,80);
   ti.setMinMax(0,40);
@@ -22,6 +22,7 @@ if(port.available()>0){
   if(mensaje!=null){
   //int[] values = int(split(mensaje,'/'));
  //println(mensaje);
+ println(mensaje);
  
  ti.setValor(float(mensaje));
  fi.setValor(float(mensaje));
