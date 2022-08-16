@@ -12,38 +12,37 @@ export const dataExp1=function(){
     Data.push("Calorias vs Tiempo")
     Data.push("Calorias")
 
-    const data = [{
-        "CaloriasQuem":13,
-        "fecha":"2022-08-15T06:00:00.000"
-    }, {
-        "CaloriasQuem":18,
-        "fecha":"2022-08-15T07:00:00.000"
-    },
-    {
-        "CaloriasQuem":24,
-        "fecha":"2022-08-15T06:32:00.000"
-    },{
-        "CaloriasQuem":5,
-        "fecha":"2022-08-15T04:00:00.000"
-    },{
-        "CaloriasQuem":17,
-        "fecha":"2022-08-15T02:00:00.000"
-    },{
-        "CaloriasQuem":22,
-        "fecha":"2022-08-15T02:00:00.000"
-    },{
-        "CaloriasQuem":12,
-        "fecha":"2022-08-15T02:00:00.000"
-    }
-    ]
+    var data
     const Valores=[]
-    const Fechas=[]
-    data.forEach((e)=>{
-        Valores.push(e["CaloriasQuem"])
-        Fechas.push(e["fecha"]);
+      const Fechas=[]
+    var promise = new Promise(function(resolve, reject) {
+      fetch('http://localhost:4000/api/Practica1/Calorias'
+      ,{
+      headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      }
+      }
+      )
+      .then(function(response){
+          console.log(response)
+          return response.json();
+      })
+      .then(function(myJson) {
+          console.log(myJson);
+          data = myJson;
+          data.forEach((e)=>{
+              Valores.push(e["caloriasQuem"])
+              Fechas.push(e["fecha"]);
+          })
+          Data.push([Valores])
+          Data.push(Fechas)
+      });
+      resolve(true);
+ 
     })
-    Data.push([Valores])
-    Data.push(Fechas)
+    promise.then(bool => console.log('Bool is true'))
+
 }
 
 export const dataExp2=function(){
@@ -53,40 +52,38 @@ export const dataExp2=function(){
     //Velo
     //
     Data.push("Distancia vs Tiempo")
-    Data.push("Velocidad")
+    Data.push("Distancia")
 
-    const data = [{
-        "vel":22,
-        "fecha":"2022-08-15T06:00:00.000"
-    }, {
-        "vel":15,
-        "fecha":"2022-08-15T07:00:00.000"
-    },
-    {
-        "vel":24,
-        "fecha":"2022-08-15T06:32:00.000"
-    },{
-        "vel":13,
-        "fecha":"2022-08-15T04:00:00.000"
-    },{
-        "vel":11,
-        "fecha":"2022-08-15T02:00:00.000"
-    },{
-        "vel":8,
-        "fecha":"2022-08-15T02:00:00.000"
-    },{
-        "vel":12,
-        "fecha":"2022-08-15T02:00:00.000"
-    }
-    ]
+    var data
     const Valores=[]
-    const Fechas=[]
-    data.forEach((e)=>{
-        Valores.push(e["vel"])
-        Fechas.push(e["fecha"]);
+      const Fechas=[]
+    var promise = new Promise(function(resolve, reject) {
+      fetch('http://localhost:4000/api/Practica1/Distancia'
+      ,{
+      headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      }
+      }
+      )
+      .then(function(response){
+          console.log(response)
+          return response.json();
+      })
+      .then(function(myJson) {
+          console.log(myJson);
+          data = myJson;
+          data.forEach((e)=>{
+              Valores.push(e["distancia"])
+              Fechas.push(e["fecha"]);
+          })
+          Data.push([Valores])
+          Data.push(Fechas)
+      });
+      resolve(true);
+ 
     })
-    Data.push([Valores])
-    Data.push(Fechas)
+    promise.then(bool => console.log('Bool is true'))
 }
 
 export const dataExp3=function(){
@@ -98,52 +95,64 @@ export const dataExp3=function(){
     Data.push("Pulso y Oxigeno vs Tiempo")
 
     Data.push("Pulso")
-    // [{{},{}},{{},{}}]
-    const data =[{
-        "Oxigeno":10,
-        "fecha":"2022-08-15T06:00:00.000",
-        "Pulso":12
-    }, {
-        "Oxigeno":5,
-        "fecha":"2022-08-15T07:00:00.000",
-        "Pulso":14
-    },
-    {
-        "Oxigeno":12,
-        "fecha":"2022-08-15T06:32:00.000",
-        "Pulso":5
-    },{
-        "Oxigeno":27,
-        "fecha":"2022-08-15T04:00:00.000",
-        "Pulso":22
-    },{
-        "Oxigeno":24,
-        "fecha":"2022-08-15T02:00:00.000",
-        "Pulso":14
-    },{
-        "Oxigeno":15,
-        "fecha":"2022-08-15T02:00:00.000",
-        "Pulso":21
-    },{
-        "Oxigeno":2,
-        "fecha":"2022-08-15T02:00:00.000",
-        "Pulso":14
-    }
-    ]
+
+    var data
+    const Valores=[]
     const Valores1=[]
     const Valores2=[]
-    const Valores=[]
     const Fechas=[]
-    data.forEach((e)=>{
-        Valores1.push(e["Oxigeno"])
-        Fechas.push(e["fecha"]);
-        Valores2.push(e["Pulso"])
+    var promise = new Promise(function(resolve, reject) {
+      fetch('http://localhost:4000/api/Practica1/Oxigeno'
+      ,{
+      headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      }
+      }
+      )
+      .then(function(response){
+          console.log(response)
+          return response.json();
+      })
+      .then(function(myJson) {
+          console.log(myJson);
+          data = myJson;
+          data.forEach((e)=>{
+              Valores1.push(e["pulsoConOxigeno"])
+              Fechas.push(e["fecha"]);
+          })
+          Data.push([Valores1])
+          Data.push(Fechas)
+      });
+      resolve(true);
+
+      fetch('http://localhost:4000/api/Practica1/Frecuencia'
+      ,{
+      headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+      }
+      }
+      )
+      .then(function(response){
+          console.log(response)
+          return response.json();
+      })
+      .then(function(myJson) {
+          console.log(myJson);
+          data = myJson;
+          data.forEach((e)=>{
+              Valores2.push(e["pulsoCard"])
+          })
+          Data.push([Valores2])
+      });
+      resolve(true);
+ 
+      Valores.push(Valores1)
+      Valores.push(Valores2)
+      Data.push(Valores)
     })
-    Valores.push(Valores1)
-    Valores.push(Valores2)
-    Data.push(Valores)
-    Data.push(Fechas)
-    console.log(Valores)
+    promise.then(bool => console.log('Bool is true'))
 }
 export let Data=["","",[0,0,0,0],["","","","hola"]]
 

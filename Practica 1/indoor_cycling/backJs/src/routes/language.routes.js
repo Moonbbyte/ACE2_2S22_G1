@@ -3,6 +3,7 @@ import { methods as practica1Controller } from "../controllers/practica1.control
 
 const router = Router();
 
+
 router.get("/Calorias", practica1Controller.getCalorias);
 router.get("/Velocidad", practica1Controller.getVelocidad);
 router.get("/Temperatura", practica1Controller.getTempCorp);
