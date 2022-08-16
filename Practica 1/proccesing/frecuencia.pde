@@ -1,9 +1,6 @@
 class frecuencia
 {
-  float posx,posy,diam,alto,minpx,maxpx,valor,valor2,min,max, valor22;
-  boolean modoHSB;
-  int r,g,b,h;
-  String magnitud,nombre;
+  float valor,valor2, valor22;
   int x=0;
   int y=0;
     int xx=420;
@@ -11,72 +8,29 @@ class frecuencia
  
   public frecuencia()
   {
-    posx=100;
-    posy=150;
-    diam=120;
-    alto=50;
-    modoHSB=true;
-    r=255;
-    g=0;
-    b=0;
-    minpx=posy-diam/2;
-    maxpx=posy-(alto*0.98);
+
+
     valor=0;
-    min=0;
-    max=30;
-    magnitud="C°";
-    nombre="Temperatura";
     valor2=0;
     valor22=0;
-    
-    
-    
-    
+   
   }
-  public void setModoHSB(boolean modoHSB)
-  {
-    this.modoHSB=modoHSB;
-  }
-  public void setColor(int r,int g,int b)
-  {
-    this.r=r;
-    this.g=g;
-    this.b=b;
-  }
-  public void setDiamAlto(float diam,float alto)
-  {
-    this.diam=diam;
-    this.alto=alto;
-  }
-  public void posicion(float posx,float posy)
-  {
-    this.posx=posx;
-    this.posy=posy;
-  }
+
+
+
   public void setValor(float valor)
   {
     this.valor=valor;
   }
-  public void setMinMax(float min,float max)
-  {
-    this.min=min;
-    this.max=max;
-  }
-  public void nombre(String nombre)
-  {
-    this.nombre=nombre;
-  }
-  public void setMagnitud(String magnitud)
-  {
-    this.magnitud=magnitud;
-  }
+
+
   public void show()
   {
 
       
 fill(255);
-    text("Frecuencia Cardiaca SpO2",300,30);
-    textFont(loadFont("ForteMT-25.vlw"), 25);    
+    text("Frecuencia Cardiaca SpO2",320,30);
+    textFont(loadFont("ReadyLover-25.vlw"), 25);    
     
 stroke(#FFFFFF );//153
 strokeWeight(15);
@@ -110,7 +64,6 @@ endShape();
 
 
 float resultado=valor2-valor;
-println((int)resultado);
 
  if((int)resultado>=1 && (int)resultado<=3)
 {   
@@ -183,10 +136,6 @@ pintar();
     
   }
   
-  public int getColor()
-  {
-    return h;
-  }
   
   
    public void pintar()

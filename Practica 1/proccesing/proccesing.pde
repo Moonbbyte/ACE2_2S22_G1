@@ -9,6 +9,9 @@ String mensaje = null;
 String temp = "";
 termometro ti=new termometro();
 frecuencia fi=new frecuencia();
+calorias ci=new calorias();
+Fondo[] fondos =new Fondo[100];
+
 int lastSecond=0;
 
 void setup(){
@@ -16,9 +19,11 @@ void setup(){
   db = new MySQL( this, "localhost", "practica1_indoor", "root", "" );  // open database file
   
   size(600,600);
-  ti.setDiamAlto(70,80);
-  ti.setMinMax(0,40);
-  ti.posicion(150,150);
+for (int i = 0; i < fondos.length; i++) {
+      fondos[i]=new Fondo();
+  }
+  
+  
 }
 
 void draw(){
@@ -54,17 +59,22 @@ if(port.available()>0){
  
  ti.setValor(values[2]);
  fi.setValor(values[1]);
- 
+ ci.setValor(float(mensaje));
  
  
   background(0);
 
- text("caloria "+mensaje, 50, 500);
 }
+
+for (int i = 0; i < fondos.length; i++) {
+      fondos[i].fall();
+      fondos[i].show();
+  }
+
 
 ti.show();
 fi.show();
-
+ci.show();
 mensaje = null;
 
 
