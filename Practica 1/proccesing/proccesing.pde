@@ -59,7 +59,7 @@ if(port.available()>0){
  
  ti.setValor(values[2]);
  fi.setValor(values[1]);
- ci.setValor(float(mensaje));
+ ci.setValor(values[1]);
  
  
   background(0);
