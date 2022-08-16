@@ -36,7 +36,7 @@ export const dataExp1=function(){
     Data.push(Valores)
     Data.push(Fechas)
 }
-export const Data=["","",[0,0,0,0],["","","","hola"]]
+export let Data=["","",[0,0,0,0],["","","","hola"]]
 
 
 export default class Experimentos extends Component{
@@ -44,7 +44,7 @@ export default class Experimentos extends Component{
         return(
                 <React.Fragment>
                      <div className="btn-group-vertical col-2" id="Exp-Component">
-                    <button className="btnEffect btn btn-dark" onClick={()=>{dataExp1()}}><Link to>Experimento 1</Link></button>
+                    <button className="btnEffect btn btn-dark" onClick={()=>{dataExp1()}}>Experimento 1</button>
                     <button className="btnEffect btn btn-dark">Experimento 2</button>
                     <button className="btnEffect btn btn-dark">Experimento 3</button>
                     </div>

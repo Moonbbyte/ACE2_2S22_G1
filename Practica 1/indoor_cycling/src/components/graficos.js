@@ -1,6 +1,8 @@
 import { Component } from "react"
 import React from 'react';
 import {Bar,Line} from 'react-chartjs-2';
+import Chart from 'chart.js'
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -89,8 +91,16 @@ import { Data } from "./Experimentos";
   
   export const UpdateChartjs=function(dataExp){
     options.plugins.title.text=dataExp[0]
-    data.datasets[0].label=dataExp[1]
-    data.datasets[0].data=dataExp[2]
+    data.datasets= [
+      {
+        label: dataExp[1],
+        data:   dataExp[2],
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: ' rgba(255, 99, 132,1)',
+        color:"white"
+        
+      }
+    ]
     data.labels=dataExp[3]
     //[titleG,parametroName,Parametros,Fechas]
     return data
@@ -122,10 +132,12 @@ export default class Graficos extends Component{
     }
   
     componentDidMount() {
+
       this.setState({
         Data: UpdateChartjs( this.props.dataExp),
         options:UpdateChartjs2(this.props.dataExp)
       })
+
     }
   
     Actualizar(){
