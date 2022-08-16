@@ -46,7 +46,7 @@ import { Data, dataExp1 } from "./Experimentos";
             },
             ticks:{
                 beginAtZero: true,
-                color: 'black',
+                color: 'white',
                 fontSize: 12,
             }
         },
