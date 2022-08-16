@@ -121,8 +121,8 @@ export const dataExp3=function(){
               Valores1.push(e["pulsoConOxigeno"])
               Fechas.push(e["fecha"]);
           })
-          Data.push([Valores1])
-          Data.push(Fechas)
+          Valores.push(Valores1)
+          
       });
       resolve(true);
 
@@ -144,13 +144,14 @@ export const dataExp3=function(){
           data.forEach((e)=>{
               Valores2.push(e["pulsoCard"])
           })
-          Data.push([Valores2])
+          Valores.push(Valores2)
       });
       resolve(true);
  
-      Valores.push(Valores1)
-      Valores.push(Valores2)
+      //Valores.push(Valores1)
+      //Valores.push(Valores2)
       Data.push(Valores)
+      Data.push(Fechas)
     })
     promise.then(bool => console.log('Bool is true'))
 }
