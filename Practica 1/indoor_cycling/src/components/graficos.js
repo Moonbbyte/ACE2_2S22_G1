@@ -14,7 +14,7 @@ import {
     Legend,
   } from 'chart.js';
 import { Button } from "bootstrap";
-import { Data } from "./Experimentos";
+import { Data, dataExp1 } from "./Experimentos";
   
   ChartJS.register(
     CategoryScale,
@@ -91,16 +91,41 @@ import { Data } from "./Experimentos";
   
   export const UpdateChartjs=function(dataExp){
     options.plugins.title.text=dataExp[0]
-    data.datasets= [
-      {
-        label: dataExp[1],
-        data:   dataExp[2],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: ' rgba(255, 99, 132,1)',
-        color:"white"
-        
-      }
-    ]
+    if(dataExp[2].length==1){
+      data.datasets= [
+        {
+          label: dataExp[1],
+          data:   dataExp[2][0],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: ' rgba(255, 99, 132,1)',
+          color:"white"
+          
+        }
+      ]
+    }else{
+      console.log("XDXDXD")
+      data.datasets= [
+        {
+          label: "Oxigeno",
+          data:   dataExp[2][0],
+          borderColor: 'rgb(155, 99, 132)',
+          backgroundColor: ' rgba(155, 99, 132,1)',
+          color:"white"
+          
+        },
+        {
+          label: "Pulso",
+          data:   dataExp[2][1],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: ' rgba(255, 99, 132,1)',
+          color:"white"
+          
+        }
+      ]
+
+
+    }
+    
     data.labels=dataExp[3]
     //[titleG,parametroName,Parametros,Fechas]
     return data
@@ -120,7 +145,7 @@ export default class Graficos extends Component{
     render(){
         return (
             <div>
-                <button onClick={()=>this.Actualizar()}>Actualizar</button>
+                <button className="btn btn-dark btnEffect" id="ActualizarGraph" onClick={()=>this.Actualizar()}>Actualizar</button>
                 <div className="col-8  container" id="Graphic-Component" align="center">
                 <div>
                  <Line options={this.state.options} data={this.state.Data} />;

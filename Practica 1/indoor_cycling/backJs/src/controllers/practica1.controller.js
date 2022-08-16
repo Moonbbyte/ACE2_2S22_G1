@@ -3,7 +3,7 @@ import {getConnection} from "../database/database"
 const getCalorias= async(req, res)=>{
     try {
         const connection= await getConnection();
-        const result= await connection.query("SELECT * FROM Calorias");
+        const result= await connection.query("SELECT caloriasQuem,fecha FROM Calorias");
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -14,7 +14,7 @@ const getCalorias= async(req, res)=>{
 const getDistancia= async(req, res)=>{
     try {
         const connection= await getConnection();
-        const result= await connection.query("SELECT * FROM Distancia");
+        const result= await connection.query("SELECT distancia,fecha FROM Distancia");
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -25,7 +25,7 @@ const getDistancia= async(req, res)=>{
 const getFrecCard= async(req, res)=>{
     try {
         const connection= await getConnection();
-        const result= await connection.query("SELECT * FROM Frec_Card");
+        const result= await connection.query("SELECT pulsoCard,fecha FROM Frec_Card");
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -36,7 +36,7 @@ const getFrecCard= async(req, res)=>{
 const getOxigeno= async(req, res)=>{
     try {
         const connection= await getConnection();
-        const result= await connection.query("SELECT * FROM Oxigeno");
+        const result= await connection.query("SELECT pulsoConOxigeno,fecha FROM Oxigeno");
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -47,7 +47,7 @@ const getOxigeno= async(req, res)=>{
 const getTempCorp= async(req, res)=>{
     try {
         const connection= await getConnection();
-        const result= await connection.query("SELECT * FROM Temp_Corp");
+        const result= await connection.query("SELECT temperatura,fecha FROM Temp_Corp");
         res.json(result);
     } catch (error) {
         res.status(500);
@@ -58,7 +58,7 @@ const getTempCorp= async(req, res)=>{
 const getVelocidad= async(req, res)=>{
     try {
         const connection= await getConnection();
-        const result= await connection.query("SELECT * FROM Velocidad");
+        const result= await connection.query("SELECT vel,fecha FROM Velocidad");
         res.json(result);
     } catch (error) {
         res.status(500);

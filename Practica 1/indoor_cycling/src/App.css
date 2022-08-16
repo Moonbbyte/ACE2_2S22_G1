@@ -38,6 +38,11 @@ body{
   padding: 0%;
   color: black;
 }
+#ActualizarGraph{
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}
 
 #Ciclista-Dash{
   position: absolute;
