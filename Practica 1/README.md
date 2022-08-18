@@ -1,7 +1,7 @@
 # Indoor Cycling
 
 ## Boceto de Esquema
-![D](./img/Prototipo.jpg)
+![D](./img/Prototipo.png)
 
 ## Imagen del Prototipo
 ![D](./img/proyecto1.jpg)
