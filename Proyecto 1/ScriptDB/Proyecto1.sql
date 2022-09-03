@@ -1,5 +1,5 @@
 CREATE database Proyecto1_boxeo;
-use Practica1_indoor;
+use Proyecto1_boxeo;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone="+00:00";
 
@@ -28,7 +28,7 @@ CREATE table Fuerza(
     fecha datetime,
 	usuarioID int,
     primary key (id),
-FOREIGN KEY (usuarioID) REFERENCES Usuario(id)
+    FOREIGN KEY (usuarioID) REFERENCES Usuario(id)  
 );
 
 
@@ -38,7 +38,7 @@ CREATE table Velocidad(
     fecha datetime,
 	usuarioID int,
     primary key (id),
-FOREIGN KEY (usuarioID) REFERENCES Usuario(id)
+    FOREIGN KEY (usuarioID) REFERENCES Usuario(id)
 );
 
 
@@ -48,7 +48,7 @@ CREATE table Ritmo(
     fecha datetime,
 	usuarioID int,
     primary key (id),
-FOREIGN KEY (usuarioID) REFERENCES Usuario(id)
+    FOREIGN KEY (usuarioID) REFERENCES Usuario(id)
 );
 
 
