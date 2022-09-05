@@ -74,15 +74,15 @@ export default class Principal extends Component{
                         <div className='container'>
                             <div className='row'>
                             <div className='col-4'>
-                                <div className='row'><img id="" width="150px" height="150px" src={require("../images/force.png")} /></div>
+                                <div ><img id="" width="70%" height="70%" src={require("../images/force.png")} /></div>
                                 <div className='row'><h5>10</h5></div>
                             </div>
                             <div className='col-4'>
-                                <div className='row'><img id="a" width="150px" height="150px" src={require("../images/fast.png")} /></div>
+                                <div><img id="a" width="70%" height="70%" src={require("../images/fast.png")} /></div>
                                 <div className='row'><h5>10</h5></div>
                             </div>
                             <div className='col-4'>
-                                <div className><img id="b" width="100%" height="50%" src={require("../images/ritmo.png")} /></div>
+                                <div><img id="b" width="100%" height="50%" src={require("../images/ritmo.png")} /></div>
                                 <div className='row'><h5>10</h5></div>
                             </div>
                             </div>
