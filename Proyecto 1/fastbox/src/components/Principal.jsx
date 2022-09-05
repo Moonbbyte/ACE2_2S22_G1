@@ -46,15 +46,48 @@ export default class Principal extends Component{
                     <div className='col-5' id="tEntr">   
                         <h5>Tiempo Total de Entrenamiento</h5>
                         <hr></hr>
+                        <div className='container'>
+                            <div className='row'>
+                                <div className='col-6'><img id="" width="100%"  src={require("../images/time.png")} /></div>
+                                <div className='col-6'><h5>30h 30min</h5></div>
+                            </div>
+                            
+                        </div>  
                     </div>
                     <div className='col-1'></div>
                     <div className='col-5' id="numEntr">
                         <h5>Numero de Entrenamientos</h5>
                         <hr></hr>
+                        <div className='container'>
+                            <div className='row'>
+                                <div className='col-6'><img id="" width="45%" height="100%" src={require("../images/box.png")} /></div>
+                                <div className='col-6'><h5>10</h5></div>
+                            </div>
+                            
+                        </div>  
                     </div>
                 </div>
                 <div className='row'>
-
+                    <div className='col-12' id="numEntr">
+                        <h5>Entrenamiento por Tipo</h5>
+                        <hr></hr>
+                        <div className='container'>
+                            <div className='row'>
+                            <div className='col-4'>
+                                <div className='row'><img id="" width="150px" height="150px" src={require("../images/force.png")} /></div>
+                                <div className='row'><h5>10</h5></div>
+                            </div>
+                            <div className='col-4'>
+                                <div className='row'><img id="a" width="150px" height="150px" src={require("../images/fast.png")} /></div>
+                                <div className='row'><h5>10</h5></div>
+                            </div>
+                            <div className='col-4'>
+                                <div className><img id="b" width="100%" height="50%" src={require("../images/ritmo.png")} /></div>
+                                <div className='row'><h5>10</h5></div>
+                            </div>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
             </div>
             </React.Fragment> 

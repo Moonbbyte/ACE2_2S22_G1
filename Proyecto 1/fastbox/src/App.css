@@ -1,5 +1,5 @@
 body{
-  background-image: url('../images//wallpapersden.com_firewatch-4k-uhd_1366x768.jpg');
+  background-image: url('./images/wallpapersden.com_firewatch-4k-uhd_1366x768.jpg');
   height: 100vh4;
   background-size: cover;
 }
@@ -19,4 +19,9 @@ body{
   position: absolute;
   top: 400px;
   left: 10px;
+}
+#Dashboard{
+  position: absolute;
+  top: 50px;
+  right: 10px;
 }
