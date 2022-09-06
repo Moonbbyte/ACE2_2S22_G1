@@ -9,15 +9,13 @@ export default class Principal extends Component{
     constructor() {
         super();
         this.state={
-            consola:"consola",
-            entrada:"",
-            Nombre:"",
-            Edad:"",
-            Peso:"",
-            Genero:"",
-            Estatura:"",
-            dateInit:"",
-            dateFinish:""
+            Nombre:"Juan",
+            Edad:"18",
+            Peso:"150",
+            Genero:"Masculino",
+            Estatura:"1.82",
+            dateInit:"14/08/2022",
+            dateFinish:"21/09/2022"
 
         }
         
@@ -38,8 +36,16 @@ export default class Principal extends Component{
             <div className='container bg-dark col-3' id="RangoFecha">
                 <h5>Rango de Fecha: </h5>
                 <hr></hr>
-                <h5>Inicio: {this.state.Nombre} </h5>
-                <h5>Fin: {this.state.Edad}</h5>
+                <div className='row'>
+                    <div className='col-2'><img id="" width="100%"  src={require("../images/calendar.png")} /></div>    
+                    <h5 className='col-9'>Inicio: {this.state.dateInit} </h5>        
+                </div>
+                <div className='row'> .</div>
+                <div className='row'>
+                    <div className='col-2'><img id="" width="100%"  src={require("../images/calendar.png")} /></div>    
+                    <h5 className='col-9'>Fin: {this.state.dateFinish} </h5>        
+                </div>
+                
             </div>
             <div className='container bg-dark col-8' id="Dashboard">
                 <div className='row'>
