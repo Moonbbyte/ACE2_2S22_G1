@@ -1,7 +1,7 @@
-import {Link, resolvePath} from 'react-router-dom'
+
 import { Component, useEffect } from "react"
 import React,{useState,useRef} from 'react';
-
+import {Link} from 'react-router-dom'
 
 
 export default class Principal extends Component{
@@ -24,6 +24,7 @@ export default class Principal extends Component{
         return(
             <React.Fragment>
             <header align="center"><h1>FastBox</h1></header>
+            <Link id="BtnGraph" to="/graficas" className="btn btn-dark">Graficas</Link>
             <div className='container bg-dark col-3' id="DatosUser">
                 <h5>Perfil: </h5>
                 <hr></hr>

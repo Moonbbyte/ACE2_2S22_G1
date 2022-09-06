@@ -17,11 +17,30 @@ body{
 }
 #RangoFecha{
   position: absolute;
-  top: 400px;
+  top: 350px;
   left: 10px;
 }
 #Dashboard{
   position: absolute;
   top: 50px;
   right: 10px;
+}
+#BtnGraph{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+#BtnHome{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+#ActualizarGraph{
+  position: absolute;
+  top: 5px;
+  right: 80px;
+}
+#GraphP{
+  position: absolute;
+  top: 30px;
 }
