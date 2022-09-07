@@ -14,8 +14,8 @@ export default class Principal extends Component{
             Peso:"150",
             Genero:"Masculino",
             Estatura:"1.82",
-            dateInit:"14/08/2022",
-            dateFinish:"21/09/2022"
+            dateInit:"2022-09-01",
+            dateFinish:"2022-10-10"
 
         }
         
@@ -37,14 +37,18 @@ export default class Principal extends Component{
             <div className='container bg-dark col-3' id="RangoFecha">
                 <h5>Rango de Fecha: </h5>
                 <hr></hr>
+                <div className='row'> Inicio:</div>
                 <div className='row'>
-                    <div className='col-2'><img id="" width="100%"  src={require("../images/calendar.png")} /></div>    
-                    <h5 className='col-9'>Inicio: {this.state.dateInit} </h5>        
+                    <input type="date" id="fechaInit" className="btn btn-dark col-9" min="2020-01-01" max="2023-12-31"
+                    value={this.state.dateInit}
+                    onChange={(e)=>{this.setState({dateInit:e.target.value}); console.log(this.state.dateInit)}}/>      
                 </div>
-                <div className='row'> .</div>
+                <div className='row'> Final:</div>
                 <div className='row'>
-                    <div className='col-2'><img id="" width="100%"  src={require("../images/calendar.png")} /></div>    
-                    <h5 className='col-9'>Fin: {this.state.dateFinish} </h5>        
+                <input type="date" id="fechaInit" className="btn btn-dark col-9" min="2020-01-01" max="2023-12-31"
+                    value={this.state.dateFinish}
+                    onChange={(e)=>{this.setState({dateFinish:e.target.value});}}     
+                />       
                 </div>
                 
             </div>
