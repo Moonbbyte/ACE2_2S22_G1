@@ -28,13 +28,19 @@ body{
 #BtnGraph{
   position: absolute;
   top: 5px;
-  right: 5px;
+  right: 105px;
+}
+#BtnLogOut{
+  position: absolute;
+  top: 5px;
+  right:5px;
 }
 #BtnHome{
   position: absolute;
   top: 5px;
   right: 5px;
 }
+
 #ActualizarGraph{
   position: absolute;
   top: 5px;

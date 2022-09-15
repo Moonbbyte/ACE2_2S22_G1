@@ -15,7 +15,13 @@ export default class Principal extends Component{
             Genero:"Masculino",
             Estatura:"1.82",
             dateInit:"2022-09-01",
-            dateFinish:"2022-10-10"
+            dateFinish:"2022-10-10",
+            //Tiempo total de entrenamiento
+            tentr:"3h 30min",
+            nentr:10,
+            fgolpe:10,
+            vgolpe:11,
+            ritmo:10
 
         }
         
@@ -60,7 +66,7 @@ export default class Principal extends Component{
                         <div className='container'>
                             <div className='row'>
                                 <div className='col-6'><img id="" width="100%"  src={require("../images/time.png")} /></div>
-                                <div className='col-6'><h5>30h 30min</h5></div>
+                                <div className='col-6'><h5>{this.state.tentr}</h5></div>
                             </div>
                             
                         </div>  
@@ -72,7 +78,7 @@ export default class Principal extends Component{
                         <div className='container'>
                             <div className='row'>
                                 <div className='col-6'><img id="" width="45%" height="100%" src={require("../images/box.png")} /></div>
-                                <div className='col-6'><h5>10</h5></div>
+                                <div className='col-6'><h5>{this.state.nentr}</h5></div>
                             </div>
                             
                         </div>  
@@ -86,15 +92,15 @@ export default class Principal extends Component{
                             <div className='row'>
                             <div className='col-4'>
                                 <div ><img id="" width="70%" height="70%" src={require("../images/force.png")} /></div>
-                                <div className='row'><h5>10</h5></div>
+                                <div className='row'><h5>{this.state.fgolpe}</h5></div>
                             </div>
                             <div className='col-4'>
                                 <div><img id="a" width="70%" height="70%" src={require("../images/fast.png")} /></div>
-                                <div className='row'><h5>10</h5></div>
+                                <div className='row'><h5>{this.state.vgolpe}</h5></div>
                             </div>
                             <div className='col-4'>
                                 <div><img id="b" width="100%" height="50%" src={require("../images/ritmo.png")} /></div>
-                                <div className='row'><h5>10</h5></div>
+                                <div className='row'><h5>{this.state.ritmo}</h5></div>
                             </div>
                             </div>
                         </div> 

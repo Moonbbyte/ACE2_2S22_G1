@@ -14,7 +14,7 @@ export const dataExp1=function(){
 
     var data
     const Valores=[]
-      const Fechas=[]
+    const Fechas=[]
     var promise = new Promise(function(resolve, reject) {
       fetch('http://localhost:4000/api/Practica1/Calorias'
       ,{

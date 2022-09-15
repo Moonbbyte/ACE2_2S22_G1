@@ -103,7 +103,7 @@ export default class Graficas extends Component{
     render(){
         return (
             <React.Fragment>
-                <Link className="btn btn-dark"  id="BtnHome" to="/">Home</Link>
+                <Link className="btn btn-dark"  id="BtnHome" to="/principal">Home</Link>
             
                 <button className="btn btn-dark btnEffect" id="ActualizarGraph" onClick={()=>this.Actualizar()}>Actualizar</button>
                 <div className="container" id="GraphP">
