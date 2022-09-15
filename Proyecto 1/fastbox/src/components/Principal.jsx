@@ -1,8 +1,19 @@
 
 import { Component, useEffect } from "react"
 import React,{useState,useRef} from 'react';
-import {Link} from 'react-router-dom'
+import {Link,useLocation} from 'react-router-dom'
 
+const _nombre=""
+const _edad=""
+const _peso=""
+const _genero=""
+const _estatura=""
+
+export const ObtDatos=()=>{  //con esto se obtienen datos mandados al hacer clic a algun boton de algun otro componente
+                             //mandandose desde la etiqueta "Link" otros valores 
+    const location = useLocation()
+   
+}
 
 export default class Principal extends Component{
     
@@ -31,6 +42,7 @@ export default class Principal extends Component{
             <React.Fragment>
             <header align="center"><h1>FastBox</h1></header>
             <Link id="BtnGraph" to="/graficas" className="btn btn-dark">Graficas</Link>
+            <Link id="BtnLogOut" to="/" className="btn btn-dark">LogOut</Link>
             <div className='container bg-dark col-3' id="DatosUser">
                 <h5>Perfil: </h5>
                 <hr></hr>
@@ -113,8 +125,14 @@ export default class Principal extends Component{
 
     }
     componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
+        ObtDatos()
         this.setState({
-            consola:""
+            Nombre:_nombre,
+            Edad:_edad,
+            Peso:_peso,
+            Genero:_genero,
+            Estatura:_estatura,
+         
         })  
     }
     Execute=async()=>{

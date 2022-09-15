@@ -26,15 +26,15 @@ export default class Login extends Component{
                 <form className="container col-6 mx-auto text-center">
                     <label className="row">
                         Nombre: 
-                        <input  onChange={(e)=>{this.setState({Nombre:e.target.value})}}></input>
+                        <input  onChange={(e)=>{this.setState({Nombre:e.target.value})}}  className="text-dark"></input>
                     </label>
                     <label className="row">
                         Edad: 
-                        <input onChange={(e)=>{this.setState({Edad:e.target.value})}}></input>
+                        <input onChange={(e)=>{this.setState({Edad:e.target.value})}} className="text-dark"></input>
                     </label>
                     <label className="row">
                         Peso: 
-                        <input onChange={(e)=>{this.setState({Peso:e.target.value})}}></input>
+                        <input onChange={(e)=>{this.setState({Peso:e.target.value})}}  className="text-dark"></input>
                     </label>
                     <label className="row">
                         Genero: 
@@ -52,9 +52,11 @@ export default class Login extends Component{
                     </label>
                     <label className="row mb-4">
                         Estatura: 
-                        <input onChange={(e)=>{this.setState({Estatura:e.target.value})}}></input>
+                        <input onChange={(e)=>{this.setState({Estatura:e.target.value})}}  className="text-dark"></input>
                     </label>
-                    <Link to="/principal" className="btn btn-dark ">Login</Link>
+                    <Link className="btn btn-dark" to={{pathname: `/principal`}}
+                    state={this.state}
+                    >Login</Link>
                 </form>
             </React.Fragment> 
         )
