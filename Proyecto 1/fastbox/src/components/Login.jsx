@@ -14,6 +14,7 @@ export default class Login extends Component{
             Peso:"150",
             Genero:"",
             Estatura:"1.82",
+            PageSol:"login"
 
         }
         
@@ -54,8 +55,8 @@ export default class Login extends Component{
                         Estatura: 
                         <input onChange={(e)=>{this.setState({Estatura:e.target.value})}}  className="text-dark"></input>
                     </label>
-                    <Link className="btn btn-dark" to={{pathname: `/principal`}}
-                    state={this.state}
+                    <Link className="btn btn-dark" to={{pathname: `/pAux`}}
+                        state={this.state}
                     >Login</Link>
                 </form>
             </React.Fragment> 
@@ -64,6 +65,7 @@ export default class Login extends Component{
 
     }
     componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
+       
         this.setState({
             consola:""
         })  

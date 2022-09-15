@@ -1,26 +1,15 @@
 
 import { Component, useEffect } from "react"
 import React,{useState,useRef} from 'react';
-import {Link,useLocation} from 'react-router-dom'
+import {Link,useLocation,useParams} from 'react-router-dom'
 
-const _nombre=""
-const _edad=""
-const _peso=""
-const _genero=""
-const _estatura=""
-
-export const ObtDatos=()=>{  //con esto se obtienen datos mandados al hacer clic a algun boton de algun otro componente
-                             //mandandose desde la etiqueta "Link" otros valores 
-    const location = useLocation()
-   
-}
 
 export default class Principal extends Component{
     
     constructor() {
         super();
         this.state={
-            Nombre:"Juan",
+            Nombre:"Default",
             Edad:"18",
             Peso:"150",
             Genero:"Masculino",
@@ -28,7 +17,7 @@ export default class Principal extends Component{
             dateInit:"2022-09-01",
             dateFinish:"2022-10-10",
             //Tiempo total de entrenamiento
-            tentr:"3h 30min",
+            tentr:"3h 10min",
             nentr:10,
             fgolpe:10,
             vgolpe:11,
@@ -125,16 +114,15 @@ export default class Principal extends Component{
 
     }
     componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
-        ObtDatos()
         this.setState({
-            Nombre:_nombre,
-            Edad:_edad,
-            Peso:_peso,
-            Genero:_genero,
-            Estatura:_estatura,
-         
+            Nombre:this.props.location.Nombre,
+            Edad:this.props.location.Edad,
+            Peso:this.props.location.Peso,
+            Genero:this.props.location.Genero,
+            Estatura:this.props.location.Estatura
         })  
     }
+
     Execute=async()=>{
         const url="http://localhost:5000/DataAnalisis"
         let config={

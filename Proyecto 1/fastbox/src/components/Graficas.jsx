@@ -97,13 +97,16 @@ export default class Graficas extends Component{
         options:options,
         Data:data,
         dateInit:"2022-09-01",
-        dateFinish:"2022-10-10"
+        dateFinish:"2022-10-10",
+        PageSol:"graficas"
     }
   }
     render(){
         return (
             <React.Fragment>
-                <Link className="btn btn-dark"  id="BtnHome" to="/principal">Home</Link>
+                <Link id="BtnHome" className="btn btn-dark" to={{pathname: `/pAux`}}
+                  state={this.state}
+                >Home</Link>
             
                 <button className="btn btn-dark btnEffect" id="ActualizarGraph" onClick={()=>this.Actualizar()}>Actualizar</button>
                 <div className="container" id="GraphP">
