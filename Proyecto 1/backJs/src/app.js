@@ -25,7 +25,8 @@ parser.on('data', (line)=>{
     console.log('Arduino dice: '+line);
 //    port.write('Desde Node');
     const words = line.split(',');
-    const myJSON = { "fuerza_g": words[1], "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "fuerza_g": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    console.log(myJSON)
     //proyecto1Controller.addFuerza(myJSON,);
 
     var promise = new Promise(function(resolve, reject) {
@@ -33,14 +34,14 @@ parser.on('data', (line)=>{
         ,{
         headers : { 
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            
         },
         method: "POST",
-        body: myJSON
+        body: JSON.stringify(myJSON)
         }
         )
-        .then(function(res){ console.log(res) })
-        .catch(function(res){ console.log(res) })
+        .then(function(res){  })
+        .catch(function(res){ })
    
       })
       promise.then(bool => console.log('Bool is true'))
