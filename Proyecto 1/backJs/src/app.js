@@ -13,7 +13,7 @@ parser.on('data', (line)=>{
     console.log('Arduino dice: '+line);
 //    port.write('Desde Node');
     const words = line.split(',');
-    const myJSON = { "fuerza_g": words[1], "fecha": "38","usuarioID":"1" };
+    const myJSON = { "fuerza_g": words[1], "fecha": "0000-00-00 00:00:00","usuarioID":"1" };
     //proyecto1Controller.addFuerza(myJSON,);
 
     var promise = new Promise(function(resolve, reject) {
