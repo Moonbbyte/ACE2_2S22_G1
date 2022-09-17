@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import SerialPort from "serialport";
 import { methods as proyecto1Controller } from "./controllers/proyecto1.controller";
-import fetch from "node-fetch";
+import fetch from 'cross-fetch';
 
 let date_ob = new Date();
 
