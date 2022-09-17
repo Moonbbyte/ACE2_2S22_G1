@@ -22,29 +22,16 @@ const parser = new SerialPort.parsers.Readline();
 port.pipe(parser);
 
 parser.on('data', (line)=>{
-    console.log('Arduino dice: '+line);
-//    port.write('Desde Node');
+    //console.log('Arduino dice: '+line);
     const words = line.split(',');
-    const myJSON = { "fuerza_g": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
-    console.log(myJSON)
-    //proyecto1Controller.addFuerza(myJSON,);
-
-    var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Proyecto1/Fuerza'
-        ,{
-        headers : { 
-            'Content-Type': 'application/json',
-            
-        },
-        method: "POST",
-        body: JSON.stringify(myJSON)
-        }
-        )
-        .then(function(res){  })
-        .catch(function(res){ })
-   
-      })
-      promise.then(bool => console.log('Bool is true'))
+    
+    if (words[0]=="1") {
+        postearRitmo(line);
+    }else if (words[0]=="2") {
+        postearFuerza(line);
+    }else if (words[0]=="3") {
+        postearVelocidad(line);
+    }
 
 });
 
@@ -66,5 +53,81 @@ app.use(express.json());
 
 //Rutas
 app.use("/api/Proyecto1",languageRoutes);
+
+
+//metodos para post en la API
+
+const postearFuerza = (bodFuerza)=>{
+
+    const words = bodFuerza.split(',');
+    const myJSON = { "fuerza_g": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    //console.log(myJSON)
+
+    var promise = new Promise(function(resolve, reject) {
+        fetch('http://localhost:4000/api/Proyecto1/Fuerza'
+        ,{
+        headers : { 
+            'Content-Type': 'application/json',
+            
+        },
+        method: "POST",
+        body: JSON.stringify(myJSON)
+        }
+        )
+        .then(function(res){  })
+        .catch(function(res){ })
+   
+      })
+      promise.then(bool => console.log('Bool is true'))
+};
+
+const postearRitmo = (bodRitmo)=>{
+
+    const words = bodRitmo.split(',');
+    const myJSON = { "ritmo_g": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    //console.log(myJSON)
+
+    var promise = new Promise(function(resolve, reject) {
+        fetch('http://localhost:4000/api/Proyecto1/Ritmo'
+        ,{
+        headers : { 
+            'Content-Type': 'application/json',
+            
+        },
+        method: "POST",
+        body: JSON.stringify(myJSON)
+        }
+        )
+        .then(function(res){  })
+        .catch(function(res){ })
+   
+      })
+      promise.then(bool => console.log('Bool is true'))
+};
+
+const postearVelocidad = (bodVelocidad)=>{
+
+    const words = bodVelocidad.split(',');
+    const myJSON = { "vel_g": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    //console.log(myJSON)
+
+    var promise = new Promise(function(resolve, reject) {
+        fetch('http://localhost:4000/api/Proyecto1/Velocidad'
+        ,{
+        headers : { 
+            'Content-Type': 'application/json',
+            
+        },
+        method: "POST",
+        body: JSON.stringify(myJSON)
+        }
+        )
+        .then(function(res){  })
+        .catch(function(res){ })
+   
+      })
+      promise.then(bool => console.log('Bool is true'))
+};
+
 
 export default app;
