@@ -88,7 +88,7 @@ const addDataUsu = async(req, res) => {
 
 const addFuerza = async(req, res) => {
     try {
-        const { fuerza_g, fecha, usuarioID } = req;
+        const { fuerza_g, fecha, usuarioID } = req.body;
         const fuerza = {fuerza_g, fecha, usuarioID};
         const connection = await getConnection();
 

@@ -14,7 +14,24 @@ parser.on('data', (line)=>{
 //    port.write('Desde Node');
     const words = line.split(',');
     const myJSON = { "fuerza_g": words[1], "fecha": "38","usuarioID":"1" };
-    proyecto1Controller.addFuerza(myJSON,);
+    //proyecto1Controller.addFuerza(myJSON,);
+
+    var promise = new Promise(function(resolve, reject) {
+        fetch('http://localhost:4000/api/Proyecto1/Fuerza'
+        ,{
+        headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        method: "POST",
+        body: myJSON
+        }
+        )
+        .then(function(res){ console.log(res) })
+        .catch(function(res){ console.log(res) })
+   
+      })
+      promise.then(bool => console.log('Bool is true'))
 
 });
 
