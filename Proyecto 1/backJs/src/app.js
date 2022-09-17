@@ -1,16 +1,18 @@
 import express from "express";
 import morgan from "morgan";
-import { SerialPortMock } from 'serialport'
+import SerialPort from "serialport";
 
-const { SerialPort, ReadlineParser } = require('serialport')
-const port = new SerialPort({ path:'/dev/robot', baudRate: 9600 })
-const parser = new ReadlineParser()
-port.pipe(parser)
-parser.on('data', console.log)
-port.write('ROBOT PLEASE RESPOND\n')
+const serialPort = require('serialport');
 
-   
-        
+const port = new SerialPort('COM3',{baudRate: 9600});
+
+const parser = new SerialPort.parsers.Readline();
+port.pipe(parser);
+
+parser.on('data', (line)=>{
+    console.log('Arduino dice: '+line);
+    port.write('Desde Node');
+});
 
 //Routes de Practica1
 import languageRoutes from "./routes/language.routes";
