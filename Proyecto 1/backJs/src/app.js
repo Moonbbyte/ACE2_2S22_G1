@@ -13,8 +13,9 @@ const port = new SerialPortMock({ path: '/dev/robot', baudRate: 9600 })
 
 port.write('Robot power on')
 
-port.on('open', () => {
+port.on('open', (lista) => {
   port.port.emitData('data')
+  console.log(lista);
 })
 
 //Settings
