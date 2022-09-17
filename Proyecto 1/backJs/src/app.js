@@ -2,12 +2,15 @@ import express from "express";
 import morgan from "morgan";
 import { SerialPortMock } from 'serialport'
 
-const { SerialPort } = require('serialport');
-const { ReadlineParser } = require('@serialport/parser-readline');
-const port = new SerialPort({ path: '/dev/ROBOT', baudRate: 9600 });
+const { SerialPort, ReadlineParser } = require('serialport')
+const port = new SerialPort({ path:'/dev/robot', baudRate: 9600 })
+const parser = new ReadlineParser()
+port.pipe(parser)
+parser.on('data', console.log)
+port.write('ROBOT PLEASE RESPOND\n')
 
-const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }));
-parser.on('data', console.log);
+   
+        
 
 //Routes de Practica1
 import languageRoutes from "./routes/language.routes";
