@@ -77,7 +77,7 @@ import {
     labels,
     datasets: [
       {
-        label: 'Medida',
+        label: 'Unidad',
         data:   [15,25,10],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132,1)',
@@ -114,7 +114,7 @@ export default class Graficas extends Component{
         options:options,
         Data:data,
         dateInit:"2022-09-01",
-        dateFinish:"2022-10-10",
+        dateFinish:"2022-09-10",
         PageSol:"graficas"
     }
   }
@@ -168,23 +168,10 @@ export default class Graficas extends Component{
         ); 
     }
   
-    componentDidMount() {
-
-      this.setState({
-      })
-
-
-    }
-  
-    Actualizar(){
-      this.setState({
-        
-      })
-    }
     FvTiempo=async()=>{
-      const url="http://localhost:5000/DataAnalisis"
+      const url="http://localhost:4000/api/Proyecto1/Fuerza"
       let config={
-          method:'POST',       //ELEMENTOS A ENVIAR
+          method:'GET',       //ELEMENTOS A ENVIAR
           headers : { 
               'Content-Type': 'application/json',
               'Accept': 'application/json'
@@ -193,14 +180,20 @@ export default class Graficas extends Component{
        //la url
        //la forma en la que vienen los datos 
       const res= await fetch(url,config)
-      const data =await res.json()
+      const data_res =await res.json()
+      console.log(data_res)
+      console.log(typeof(data_res[0].fecha))
+      let datosGraph=this.datos_graph(data_res)
+      if (datosGraph[0].length==0){
+        alert("No existen datos en esas fechas")
+      }
       this.setState({
-        data:  {
-          labels:[], //cambiar esto 
+        Data:  {
+          labels:datosGraph[0], //cambiar esto 
           datasets:[
             {
-              label:" dataExp[1]", //cambiar esto 
-              data:   "dataExp[2][0]", //cambiar esto 
+              label:"Fuerza", //cambiar esto 
+              data:   datosGraph[1], //cambiar esto 
               borderColor: 'rgb(255, 99, 132)',
               backgroundColor: ' rgba(255, 99, 132,1)',
               color:"white"
@@ -255,9 +248,9 @@ export default class Graficas extends Component{
       })  
   }
   VvTiempo=async()=>{
-    const url="http://localhost:5000/DataAnalisis"
+    const url="http://localhost:4000/api/Proyecto1/Velocidad"
     let config={
-        method:'POST',       //ELEMENTOS A ENVIAR
+        method:'GET',       //ELEMENTOS A ENVIAR
         headers : { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -265,14 +258,16 @@ export default class Graficas extends Component{
     }
 
     const res= await fetch(url,config)
-    const data =await res.json()
+    const data_res =await res.json()
+    let datosGraph=this.datos_graphvel(data_res)
+    console.log(data_res)
     this.setState({
-      data:  {
-        labels:[], //cambiar esto 
+      Data:  {
+        labels:datosGraph[0], //cambiar esto 
         datasets:[
           {
-            label:" dataExp[1]", //cambiar esto 
-            data:   "dataExp[2][0]", //cambiar esto 
+            label:" Velocidad", //cambiar esto 
+            data:  datosGraph[1], //cambiar esto 
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: ' rgba(255, 99, 132,1)',
             color:"white"
@@ -328,9 +323,9 @@ export default class Graficas extends Component{
   }
 
   RvTiempo=async()=>{
-    const url="http://localhost:5000/DataAnalisis"
+    const url="http://localhost:4000/api/Proyecto1/Ritmo"
     let config={
-        method:'POST',       //ELEMENTOS A ENVIAR
+        method:'GET',       //ELEMENTOS A ENVIAR
         headers : { 
             'Content-Type': 'application/json',
             'Accept': 'application/json'
@@ -338,13 +333,14 @@ export default class Graficas extends Component{
     }
 
     const res= await fetch(url,config)
-    const data =await res.json()
+    const data_res =await res.json()
+    console.log(data_res)
     this.setState({
-      data:  {
+      Data:  {
         labels:[], //cambiar esto 
         datasets:[
           {
-            label:" dataExp[1]", //cambiar esto 
+            label:" Ritmo ", //cambiar esto 
             data:   "dataExp[2][0]", //cambiar esto 
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: ' rgba(255, 99, 132,1)',
@@ -399,4 +395,66 @@ export default class Graficas extends Component{
       }
     })  
   }
+
+  datos_graph(datos){
+    let datos_g=[]
+    let labels=[]
+    let values=[]
+    let di= this.state.dateInit.split("-")
+    let df= this.state.dateFinish.split("-")
+    let date_i=new Date(this.state.dateInit.replace(/-/g, '\/'))
+    let date_f=new Date(this.state.dateFinish.replace(/-/g, '\/'))    
+    for (let x=date_i; x<=date_f; date_i.setDate(date_i.getDate() + 1)){
+      let mes=String(date_i.getMonth()+1)
+      let dia=String(date_i.getDate())
+      if(mes.length==1){
+        mes="0"+mes
+      }
+      if(dia.length==1){
+        dia="0"+dia
+      }
+    
+      let fecha=`${date_i.getFullYear()}-${mes}-${dia}`
+      console.log(fecha)
+      for(let i=0; i<datos.length;i++){
+        if (datos[i].fecha.includes(fecha)){
+          values.push(datos[i].fuerza_g)
+          labels.push(datos[i].fecha)
+        }
+      }
+    }  
+    datos_g=[labels,values]
+    return datos_g
+  }
+
+  datos_graphvel(datos){
+    let datos_g=[]
+    let labels=[]
+    let values=[]
+    let date_i=new Date(this.state.dateInit.replace(/-/g, '\/'))
+    let date_f=new Date(this.state.dateFinish.replace(/-/g, '\/'))    
+    for (let x=date_i; x<=date_f; date_i.setDate(date_i.getDate() + 1)){
+      let mes=String(date_i.getMonth()+1)
+      let dia=String(date_i.getDate())
+      if(mes.length==1){
+        mes="0"+mes
+      }
+      if(dia.length==1){
+        dia="0"+dia
+      }
+    
+      let fecha=`${date_i.getFullYear()}-${mes}-${dia}`
+      console.log(fecha)
+      for(let i=0; i<datos.length;i++){
+        if (datos[i].fecha.includes(fecha)){
+          values.push(datos[i].vel_g)
+          labels.push(datos[i].fecha)
+        }
+      }
+    }  
+    datos_g=[labels,values]
+    return datos_g
+  }
 }
+//2022-09-17T23:48:21.000Z    17/09-18/09
+//2022-09-18T00:14:57.000Z
