@@ -62,7 +62,7 @@ import {
       },
       title: {
         display: true,
-        text: 'Calorias vs Tiempo',
+        text: 'Experimento',
         color:"white"
         
       },
@@ -77,7 +77,7 @@ import {
     labels,
     datasets: [
       {
-        label: 'Titulo',
+        label: 'Medida',
         data:   [15,25,10],
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132,1)',
@@ -87,7 +87,24 @@ import {
     ],
   };
 
-  
+  export const UpdateChartjs=function(dataExp){
+    options.plugins.title.text=dataExp[0]
+   
+      data.datasets= [
+        {
+          label: dataExp[1],
+          data:   dataExp[2][0],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: ' rgba(255, 99, 132,1)',
+          color:"white"
+          
+        }
+      ]
+    
+    data.labels=dataExp[3]
+    //[titleG,parametroName,Parametros,Fechas]
+    return data
+  }
   
 
 export default class Graficas extends Component{
@@ -132,9 +149,9 @@ export default class Graficas extends Component{
                        
                         <div className="row mt-5" id="buttonsExp">
                             <div className="btn-group-vertical col-9" id="Exp-Component">
-                                <button className="btnEffect btn btn-dark" >Delta Fuerza</button>
-                                <button className="btnEffect btn btn-dark"  >Delta Velta</button>
-                                <button className="btnEffect btn btn-dark" >Tiempo Zona Ritmo</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.FvTiempo()} >Delta Fuerza</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.VvTiempo()} >Delta Velta</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.RvTiempo()}>Tiempo Zona Ritmo</button>
                             </div>
                         </div>
                     </div>
@@ -154,8 +171,8 @@ export default class Graficas extends Component{
     componentDidMount() {
 
       this.setState({
-        
       })
+
 
     }
   
@@ -164,6 +181,222 @@ export default class Graficas extends Component{
         
       })
     }
-    
+    FvTiempo=async()=>{
+      const url="http://localhost:5000/DataAnalisis"
+      let config={
+          method:'POST',       //ELEMENTOS A ENVIAR
+          headers : { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+      }
+       //la url
+       //la forma en la que vienen los datos 
+      const res= await fetch(url,config)
+      const data =await res.json()
+      this.setState({
+        data:  {
+          labels:[], //cambiar esto 
+          datasets:[
+            {
+              label:" dataExp[1]", //cambiar esto 
+              data:   "dataExp[2][0]", //cambiar esto 
+              borderColor: 'rgb(255, 99, 132)',
+              backgroundColor: ' rgba(255, 99, 132,1)',
+              color:"white"
+            
+            }
+          ],
+        },
+        options:  {
+          responsive: true,
+          scales: {
+              yAxes:{
+                  grid: {
+                      drawBorder: true,
+                      color: '#FFFFFF',
+                  },
+                  ticks:{
+                      beginAtZero: true,
+                      color: 'white',
+                      fontSize: 12,
+                  }
+              },
+              xAxes: {
+                  grid: {
+                      drawBorder: true,
+                      color: '#FFFFFF',
+                  },
+                  ticks:{
+                      beginAtZero: true,
+                      color: 'white',
+                      fontSize: 12,
+                  }
+              },
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                  color: "white", 
+                  font: {
+                    size: 18
+                  }
+                }
+            },
+            title: {
+              display: true,
+              text: 'Fuerza vs Tiempo', //cambia esto 
+              color:"white"
+              
+            },
+          },
+        }
+      })  
+  }
+  VvTiempo=async()=>{
+    const url="http://localhost:5000/DataAnalisis"
+    let config={
+        method:'POST',       //ELEMENTOS A ENVIAR
+        headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+    }
 
+    const res= await fetch(url,config)
+    const data =await res.json()
+    this.setState({
+      data:  {
+        labels:[], //cambiar esto 
+        datasets:[
+          {
+            label:" dataExp[1]", //cambiar esto 
+            data:   "dataExp[2][0]", //cambiar esto 
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: ' rgba(255, 99, 132,1)',
+            color:"white"
+          
+          }
+        ],
+      },
+      options:  {
+        responsive: true,
+        scales: {
+            yAxes:{
+                grid: {
+                    drawBorder: true,
+                    color: '#FFFFFF',
+                },
+                ticks:{
+                    beginAtZero: true,
+                    color: 'white',
+                    fontSize: 12,
+                }
+            },
+            xAxes: {
+                grid: {
+                    drawBorder: true,
+                    color: '#FFFFFF',
+                },
+                ticks:{
+                    beginAtZero: true,
+                    color: 'white',
+                    fontSize: 12,
+                }
+            },
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+                color: "white", 
+                font: {
+                  size: 18
+                }
+              }
+          },
+          title: {
+            display: true,
+            text: 'Velocidad vs Tiempo', //cambia esto 
+            color:"white"
+            
+          },
+        },
+      }
+    })  
+  }
+
+  RvTiempo=async()=>{
+    const url="http://localhost:5000/DataAnalisis"
+    let config={
+        method:'POST',       //ELEMENTOS A ENVIAR
+        headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+    }
+
+    const res= await fetch(url,config)
+    const data =await res.json()
+    this.setState({
+      data:  {
+        labels:[], //cambiar esto 
+        datasets:[
+          {
+            label:" dataExp[1]", //cambiar esto 
+            data:   "dataExp[2][0]", //cambiar esto 
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: ' rgba(255, 99, 132,1)',
+            color:"white"
+          
+          }
+        ],
+      },
+      options:  {
+        responsive: true,
+        scales: {
+            yAxes:{
+                grid: {
+                    drawBorder: true,
+                    color: '#FFFFFF',
+                },
+                ticks:{
+                    beginAtZero: true,
+                    color: 'white',
+                    fontSize: 12,
+                }
+            },
+            xAxes: {
+                grid: {
+                    drawBorder: true,
+                    color: '#FFFFFF',
+                },
+                ticks:{
+                    beginAtZero: true,
+                    color: 'white',
+                    fontSize: 12,
+                }
+            },
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+                color: "white", 
+                font: {
+                  size: 18
+                }
+              }
+          },
+          title: {
+            display: true,
+            text: 'Ritmo vs Tiempo', //cambia esto 
+            color:"white"
+            
+          },
+        },
+      }
+    })  
+  }
 }
