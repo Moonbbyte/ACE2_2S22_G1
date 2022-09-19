@@ -14,17 +14,17 @@ export default class Principal extends Component{
             Peso:"150",
             Genero:"Masculino",
             Estatura:"1.82",
-            dateInit:"2022-09-01",
-            dateFinish:"2022-10-10",
+            dateInit:"2022-09-16",
+            dateFinish:"2022-09-18",
             //Tiempo total de entrenamiento
-            tentr:"3h 10min",
+            tentr:"30min",
             nentr:10,
-            fgolpe:10,
-            vgolpe:11,
-            ritmo:10
+            fgolpe:0,
+            vgolpe:0,
+            ritmo:0,
+            inicio:true
 
         }
-        
     }
     render(){
         return(
@@ -48,7 +48,7 @@ export default class Principal extends Component{
                 <div className='row'>
                     <input type="date" id="fechaInit" className="btn btn-dark col-9" min="2020-01-01" max="2023-12-31"
                     value={this.state.dateInit}
-                    onChange={(e)=>{this.setState({dateInit:e.target.value}); console.log(this.state.dateInit)}}/>      
+                    onChange={(e)=>{this.setState({dateInit:e.target.value}); }}/>      
                 </div>
                 <div className='row'> Final:</div>
                 <div className='row'>
@@ -121,13 +121,14 @@ export default class Principal extends Component{
             Genero:this.props.location.Genero,
             Estatura:this.props.location.Estatura
         })  
+        this.datosP1()
+
     }
 
-    Execute=async()=>{
-        const url="http://localhost:5000/DataAnalisis"
+    FvR=async()=>{
+        const url="http://localhost:4000/api/Proyecto1/Fuerza"
         let config={
-            method:'POST',       //ELEMENTOS A ENVIAR
-            body:JSON.stringify([{entrada:this.state.entrada}]),
+            method:'GET',      
             headers : { 
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
@@ -136,12 +137,70 @@ export default class Principal extends Component{
     
         const res= await fetch(url,config)
         const data =await res.json()
-        this.setState({
-            consola:data.Contenido
-        })
-        //esto lo devuelve como una lista {hola: "pureba"}
+        if(data.length>0){
+            this.setState({
+                fgolpe:data[data.length-1].fuerza_g,
+                nentr:this.datos_graph(data).length
+            })
+        }
+
+        const url1="http://localhost:4000/api/Proyecto1/Velocidad"
+        const res1= await fetch(url1,config)
+        const data1 =await res1.json()
+        if(data1.length>0){
+            this.setState({
+                vgolpe:data1[data1.length-1].vel_g
+            })
+        }
+        const url2="http://localhost:4000/api/Proyecto1/Ritmo"
+        const res2= await fetch(url2,config)
+        const data2 =await res2.json()
+       
+        if(data2.length>0){
+            this.setState({
+                
+                ritmo:data2[data2.length-1].ritmo_g
+            })
+        }
+
+    }
+    
+    datosP1(){
+        if(this.state.inicio==true){
+            this.FvR()
+            this.state.inicio=false
+        }else{
+            setInterval(() => {
+                this.FvR()
+              }, 4000);
+        }
     }
 
-
+    
+    datos_graph(datos){
+        let datos_g=[]
+        let values=[]
+        let date_i=new Date(this.state.dateInit.replace(/-/g, '\/'))
+        let date_f=new Date(this.state.dateFinish.replace(/-/g, '\/'))    
+        for (let x=date_i; x<=date_f; date_i.setDate(date_i.getDate() + 1)){
+          let mes=String(date_i.getMonth()+1)
+          let dia=String(date_i.getDate())
+          if(mes.length==1){
+            mes="0"+mes
+          }
+          if(dia.length==1){
+            dia="0"+dia
+          }
+        
+          let fecha=`${date_i.getFullYear()}-${mes}-${dia}`
+          for(let i=0; i<datos.length;i++){
+            if (datos[i].fecha.includes(fecha)){
+              values.push(datos[i].fuerza_g)
+            }
+          }
+        }  
+        return values
+      }
+    
     
 }
