@@ -335,13 +335,14 @@ export default class Graficas extends Component{
     const res= await fetch(url,config)
     const data_res =await res.json()
     console.log(data_res)
+    let datosGraph=this.datos_graphrit(data_res)
     this.setState({
       Data:  {
-        labels:[], //cambiar esto 
+        labels:datosGraph[0], //cambiar esto 
         datasets:[
           {
             label:" Ritmo ", //cambiar esto 
-            data:   "dataExp[2][0]", //cambiar esto 
+            data:   datosGraph[1], //cambiar esto 
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: ' rgba(255, 99, 132,1)',
             color:"white"
@@ -448,6 +449,35 @@ export default class Graficas extends Component{
       for(let i=0; i<datos.length;i++){
         if (datos[i].fecha.includes(fecha)){
           values.push(datos[i].vel_g)
+          labels.push(datos[i].fecha)
+        }
+      }
+    }  
+    datos_g=[labels,values]
+    return datos_g
+  }
+
+  datos_graphrit(datos){
+    let datos_g=[]
+    let labels=[]
+    let values=[]
+    let date_i=new Date(this.state.dateInit.replace(/-/g, '\/'))
+    let date_f=new Date(this.state.dateFinish.replace(/-/g, '\/'))    
+    for (let x=date_i; x<=date_f; date_i.setDate(date_i.getDate() + 1)){
+      let mes=String(date_i.getMonth()+1)
+      let dia=String(date_i.getDate())
+      if(mes.length==1){
+        mes="0"+mes
+      }
+      if(dia.length==1){
+        dia="0"+dia
+      }
+    
+      let fecha=`${date_i.getFullYear()}-${mes}-${dia}`
+      console.log(fecha)
+      for(let i=0; i<datos.length;i++){
+        if (datos[i].fecha.includes(fecha)){
+          values.push(datos[i].ritmo_g)
           labels.push(datos[i].fecha)
         }
       }
