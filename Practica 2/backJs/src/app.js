@@ -56,14 +56,14 @@ app.use("/api/Practica2",languageRoutes);
 
 //metodos para post en la API
 
-const postearFuerza = (bodFuerza)=>{
+const postearCalorias = (bodFuerza)=>{
 
     const words = bodFuerza.split(',');
-    const myJSON = { "fuerza_g": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "caloriasQuem": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/Fuerza'
+        fetch('http://localhost:4000/api/Practica2/Calorias'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -80,14 +80,14 @@ const postearFuerza = (bodFuerza)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearRitmo = (bodRitmo)=>{
+const postearFrecuenciaRep = (bodRitmo)=>{
 
     const words = bodRitmo.split(',');
-    const myJSON = { "ritmo_g": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "vel_rep": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/Ritmo'
+        fetch('http://localhost:4000/api/Practica2/FrecuenciaRep'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -104,14 +104,14 @@ const postearRitmo = (bodRitmo)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearVelocidad = (bodVelocidad)=>{
+const postearRango = (bodVelocidad)=>{
 
     const words = bodVelocidad.split(',');
-    const myJSON = { "vel_g": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "rango": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/Velocidad'
+        fetch('http://localhost:4000/api/Practica2/Rango'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -128,5 +128,76 @@ const postearVelocidad = (bodVelocidad)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
+const postearFrecCard = (bodVelocidad)=>{
+
+    const words = bodVelocidad.split(',');
+    const myJSON = { "pulsoCard": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    //console.log(myJSON)
+
+    var promise = new Promise(function(resolve, reject) {
+        fetch('http://localhost:4000/api/Practica2/Frecuencia'
+        ,{
+        headers : { 
+            'Content-Type': 'application/json',
+            
+        },
+        method: "POST",
+        body: JSON.stringify(myJSON)
+        }
+        )
+        .then(function(res){  })
+        .catch(function(res){ })
+   
+      })
+      promise.then(bool => console.log('Bool is true'))
+};
+
+const postearDatUsuario = (bodVelocidad)=>{
+
+    const words = bodVelocidad.split(',');
+    const myJSON = { "edad": words[1].replace('\r',''), "peso": fechaAct,"genero":"1", "estatura": "", "usuarioID": ""};
+    //console.log(myJSON)
+
+    var promise = new Promise(function(resolve, reject) {
+        fetch('http://localhost:4000/api/Practica2/DataUsu'
+        ,{
+        headers : { 
+            'Content-Type': 'application/json',
+            
+        },
+        method: "POST",
+        body: JSON.stringify(myJSON)
+        }
+        )
+        .then(function(res){  })
+        .catch(function(res){ })
+   
+      })
+      promise.then(bool => console.log('Bool is true'))
+};
+
+const postearUsuario = (bodVelocidad)=>{
+
+    const words = bodVelocidad.split(',');
+    const myJSON = { "nombreUsu": words[1].replace('\r',''), "pass": fechaAct };
+    //console.log(myJSON)
+
+    var promise = new Promise(function(resolve, reject) {
+        fetch('http://localhost:4000/api/Practica2/Usuario'
+        ,{
+        headers : { 
+            'Content-Type': 'application/json',
+            
+        },
+        method: "POST",
+        body: JSON.stringify(myJSON)
+        }
+        )
+        .then(function(res){  })
+        .catch(function(res){ })
+   
+      })
+      promise.then(bool => console.log('Bool is true'))
+};
 
 export default app;
