@@ -25,11 +25,14 @@ parser.on('data', (line)=>{
     //console.log('Arduino dice: '+line);
     const words = line.split(',');
     
-    if (words[0]=="1") {
+    if (words.length == 4) {
        // postearRitmo(line);
-       // practica.postearCalorias();
-       console.log(line);
-    }else if (words[0]=="2") {
+        practica.postearCalorias(line);
+        practica.postearFrecuenciaRep(line);
+        practica.postearRango(line);
+        practica.postearFrecCard(line);
+        console.log(line);
+    }else if (words.length == 3) {
         //postearFuerza(line);
     }else if (words[0]=="3") {
         //postearVelocidad(line);

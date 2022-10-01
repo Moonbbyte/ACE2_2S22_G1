@@ -1,9 +1,9 @@
-//metodos para post en la API
+//metodos para post en la API  rangomov,repeticiones,calorias,ritmocardiaco
 
 const postearCalorias = (bodFuerza)=>{
 
     const words = bodFuerza.split(',');
-    const myJSON = { "caloriasQuem": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "caloriasQuem": words[2].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
@@ -51,7 +51,7 @@ const postearFrecuenciaRep = (bodRitmo)=>{
 const postearRango = (bodVelocidad)=>{
 
     const words = bodVelocidad.split(',');
-    const myJSON = { "rango": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "rango": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
@@ -75,7 +75,7 @@ const postearRango = (bodVelocidad)=>{
 const postearFrecCard = (bodVelocidad)=>{
 
     const words = bodVelocidad.split(',');
-    const myJSON = { "pulsoCard": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "pulsoCard": words[3].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
