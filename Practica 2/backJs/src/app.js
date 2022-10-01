@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import SerialPort from "serialport";
 import { methods as practica } from "./controllers/practica2.serialport";
+import fetch from 'cross-fetch';
 
 
 // Import dependencies
@@ -15,14 +16,39 @@ parser.on('data', (line)=>{
     const words = line.split(',');
     
     if (words.length == 4) {
-       // postearRitmo(line);
         practica.postearCalorias(line);
         practica.postearFrecuenciaRep(line);
         practica.postearRango(line);
         practica.postearFrecCard(line);
         console.log(line);
-    }else if (words.length == 3) {
-        //postearFuerza(line);
+    }else if (words.length == 6) {
+        practica.postearUsuario(line);
+        var datos;
+        var promise = fetch('http://localhost:4000/api/Practica2/Usuario')
+        .then((response) => datos= response.json())
+        .then((data) => console.log(data));
+/*
+        var promise = new Promise(function(resolve, reject) {
+            fetch('http://localhost:4000/api/Practica2/Usuario'
+            ,{
+            headers : { 
+                'Content-Type': 'application/json',
+                
+            },
+            method: "GET",
+            body: JSON.stringify(myJSON)
+            
+            }
+            )
+            .then(function(res){  })
+            .catch(function(res){ })
+       
+          })
+          promise.then(bool => console.log('Bool is true'))
+*/      
+        var idus = JSON.parse(datos);
+        console.log(idus.length);
+        practica.postearDatUsuario(line ,idus );
     }else if (words[0]=="3") {
         //postearVelocidad(line);
     }

@@ -108,10 +108,9 @@ const postearFrecCard = (bodVelocidad)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearDatUsuario = (bodVelocidad)=>{
-
+const postearDatUsuario = (bodVelocidad , idUs)=>{
     const words = bodVelocidad.split(',');
-    const myJSON = { "edad": words[1].replace('\r',''), "peso": fechaAct,"genero":"1", "estatura": "", "usuarioID": ""};
+    const myJSON = { "edad": words[2], "peso": words[3],"genero":words[4], "estatura": words[5].replace('\r',''), "usuarioID": idUs};
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
@@ -135,7 +134,7 @@ const postearDatUsuario = (bodVelocidad)=>{
 const postearUsuario = (bodVelocidad)=>{
 
     const words = bodVelocidad.split(',');
-    const myJSON = { "nombreUsu": words[1].replace('\r',''), "pass": fechaAct };
+    const myJSON = { "nombreUsu": words[0], "pass": words[1] };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
