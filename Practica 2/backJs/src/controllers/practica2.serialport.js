@@ -1,4 +1,5 @@
 //metodos para post en la API  rangomov,repeticiones,calorias,ritmocardiaco
+import fetch from 'cross-fetch';
 
 let date_ob = new Date();
 

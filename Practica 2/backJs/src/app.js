@@ -4,7 +4,6 @@ import SerialPort from "serialport";
 import { methods as practica } from "./controllers/practica2.serialport";
 
 
-
 // Import dependencies
 const port = new SerialPort('COM3',{baudRate: 9600});
 
