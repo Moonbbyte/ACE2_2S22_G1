@@ -26,12 +26,13 @@ parser.on('data', (line)=>{
     const words = line.split(',');
     
     if (words[0]=="1") {
-        postearRitmo(line);
-        practica.postearCalorias();
+       // postearRitmo(line);
+       // practica.postearCalorias();
+       console.log(words);
     }else if (words[0]=="2") {
-        postearFuerza(line);
+        //postearFuerza(line);
     }else if (words[0]=="3") {
-        postearVelocidad(line);
+        //postearVelocidad(line);
     }
 
 });
