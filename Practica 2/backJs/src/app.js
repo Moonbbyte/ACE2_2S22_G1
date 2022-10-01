@@ -28,7 +28,7 @@ parser.on('data', (line)=>{
     if (words[0]=="1") {
        // postearRitmo(line);
        // practica.postearCalorias();
-       console.log(words);
+       console.log(line);
     }else if (words[0]=="2") {
         //postearFuerza(line);
     }else if (words[0]=="3") {
