@@ -12,7 +12,6 @@ const parser = new SerialPort.parsers.Readline();
 port.pipe(parser);
 
 parser.on('data', (line)=>{
-    //console.log('Arduino dice: '+line);
     const words = line.split(',');
     console.log(words);
     if (words.length == 4) {
@@ -32,9 +31,9 @@ parser.on('data', (line)=>{
 
             console.log("datos");
             console.log(datos);
-            var idus = JSON.parse(datos);
-            console.log(idus.length);
-          practica.postearDatUsuario(line ,idus.length );
+            var idus = datos.id;
+            console.log(idus);
+          practica.postearDatUsuario(line ,idus );
         });
         })
         promise.then(bool => console.log('Bool is true'))          
