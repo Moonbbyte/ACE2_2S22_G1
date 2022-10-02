@@ -33,6 +33,7 @@ export default class Principal extends Component{
             <Link id="BtnGraph" className="btn btn-dark btnEffect" to={{pathname: `/gAux`}}
                         state={this.state}>Graficas</Link>
             <Link id="BtnLogOut" to="/" className="btn btn-dark btnEffect" >LogOut</Link>
+
             <div className='container bg-dark col-3' id="DatosUser">
                 <h5>Perfil: </h5>
                 <hr></hr>
@@ -129,8 +130,8 @@ export default class Principal extends Component{
             Genero:this.props.location.Genero,
             Estatura:this.props.location.Estatura
         })  
+        this.Pruebas()
         //this.datosP1()
-
     }
 
     FvR=async()=>{
@@ -208,7 +209,27 @@ export default class Principal extends Component{
           }
         }  
         return values
-      }
+    }
+    //USUARIO:  id:1, nombreUsu: 'Juan0', pass: '123'      http://
+    //DataUsu:  edad: 25, peso:65, genero:'1', estatura:168,usuarioId:1    http://
+    //Frecuencia: {pulsoCard: 150, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
+    //Rango: {rango: 96, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
+    // FrecuenciaRep: {vel_rep: 1, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
+    //CaloriasQuemadas: {caloriasQuem: 14.83, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
+    Pruebas=async()=>{
+        const url="http://localhost:4000/api/Practica2/Calorias"
+        let config={
+            method:'GET',       //ELEMENTOS A ENVIAR
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        }
+        const res= await fetch(url,config)
+        const data_res =await res.json()
+        console.log(data_res)
+       
+    }
     
     
 }

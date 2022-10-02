@@ -113,10 +113,11 @@ export default class Graficas extends Component{
     this.state={
         Nombre:"usuario",
         Fecha:"",
+        id:1,
         options:options,
         Data:data,
-        dateInit:"2022-09-01",
-        dateFinish:"2022-09-10",
+        dateInit:"2022-10-01",
+        dateFinish:"2022-10-10",
         PageSol:"graficas"
     }
   }
@@ -157,9 +158,9 @@ export default class Graficas extends Component{
                        
                         <div className="row mt-5" id="buttonsExp">
                             <div className="btn-group-vertical col-9" id="Exp-Component">
-                                <button className="btnEffect btn btn-dark" onClick={()=>this.FvTiempo()} >Frecuencia Cardiaca</button>
-                                <button className="btnEffect btn btn-dark" onClick={()=>this.VvTiempo()} >Rango de Movimiento</button>
-                                <button className="btnEffect btn btn-dark" onClick={()=>this.RvTiempo()}>Calorias Quemadas</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.FcvTiempo()} >Frecuencia Cardiaca</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.RmvTiempo()} >Rango de Movimiento</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.CalquemvTiempo()}>Calorias Quemadas</button>
                             </div>
                         </div>
                     </div>
@@ -186,7 +187,6 @@ export default class Graficas extends Component{
   actFecha(){
     setInterval(() => {
         this.ActFechaM()
-        console.log("Fecha")
       }, 10000);
   }
   ActFechaM(){
@@ -201,87 +201,9 @@ export default class Graficas extends Component{
         Fecha:strF
     })
   }
-  FvTiempo=async()=>{
-      const url="http://localhost:4000/api/Proyecto1/Fuerza"
-      let config={
-          method:'GET',       //ELEMENTOS A ENVIAR
-          headers : { 
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
-          },
-      }
-       //la url
-       //la forma en la que vienen los datos 
-      const res= await fetch(url,config)
-      const data_res =await res.json()
-      console.log(data_res)
-      console.log(typeof(data_res[0].fecha))
-      let datosGraph=this.datos_graph(data_res)
-      if (datosGraph[0].length==0){
-        alert("No existen datos en esas fechas")
-      }
-      this.setState({
-        Data:  {
-          labels:datosGraph[0], //cambiar esto 
-          datasets:[
-            {
-              label:"Fuerza", //cambiar esto 
-              data:   datosGraph[1], //cambiar esto 
-              borderColor: 'rgb(255, 99, 132)',
-              backgroundColor: ' rgba(255, 99, 132,1)',
-              color:"white"
-            
-            }
-          ],
-        },
-        options:  {
-          responsive: true,
-          scales: {
-              yAxes:{
-                  grid: {
-                      drawBorder: true,
-                      color: '#FFFFFF',
-                  },
-                  ticks:{
-                      beginAtZero: true,
-                      color: 'white',
-                      fontSize: 12,
-                  }
-              },
-              xAxes: {
-                  grid: {
-                      drawBorder: true,
-                      color: '#FFFFFF',
-                  },
-                  ticks:{
-                      beginAtZero: true,
-                      color: 'white',
-                      fontSize: 12,
-                  }
-              },
-          },
-          plugins: {
-            legend: {
-              position: 'top',
-              labels: {
-                  color: "white", 
-                  font: {
-                    size: 18
-                  }
-                }
-            },
-            title: {
-              display: true,
-              text: 'Fuerza vs Tiempo', //cambia esto 
-              color:"white"
-              
-            },
-          },
-        }
-      })  
-  }
-  VvTiempo=async()=>{
-    const url="http://localhost:4000/api/Proyecto1/Velocidad"
+  //---------------------------------------------------------------------------------------------//
+  FcvTiempo=async()=>{
+    const url="http://localhost:4000/api/Practica2/Frecuencia"
     let config={
         method:'GET',       //ELEMENTOS A ENVIAR
         headers : { 
@@ -292,14 +214,14 @@ export default class Graficas extends Component{
 
     const res= await fetch(url,config)
     const data_res =await res.json()
-    let datosGraph=this.datos_graphvel(data_res)
+    let datosGraph=this.datos_graphFc(data_res)
     console.log(data_res)
     this.setState({
       Data:  {
         labels:datosGraph[0], //cambiar esto 
         datasets:[
           {
-            label:" Velocidad", //cambiar esto 
+            label:"Pulso Cardiaco", //cambiar esto 
             data:  datosGraph[1], //cambiar esto 
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: ' rgba(255, 99, 132,1)',
@@ -346,7 +268,7 @@ export default class Graficas extends Component{
           },
           title: {
             display: true,
-            text: 'Velocidad vs Tiempo', //cambia esto 
+            text: 'Frecuencia Cardiaca vs Tiempo', //cambia esto 
             color:"white"
             
           },
@@ -355,8 +277,8 @@ export default class Graficas extends Component{
     })  
   }
 
-  RvTiempo=async()=>{
-    const url="http://localhost:4000/api/Proyecto1/Ritmo"
+  RmvTiempo=async()=>{
+    const url="http://localhost:4000/api/Practica2/Rango"
     let config={
         method:'GET',       //ELEMENTOS A ENVIAR
         headers : { 
@@ -368,13 +290,13 @@ export default class Graficas extends Component{
     const res= await fetch(url,config)
     const data_res =await res.json()
     console.log(data_res)
-    let datosGraph=this.datos_graphrit(data_res)
+    let datosGraph=this.datos_graphRm(data_res)
     this.setState({
       Data:  {
         labels:datosGraph[0], //cambiar esto 
         datasets:[
           {
-            label:" Ritmo ", //cambiar esto 
+            label:" Rango", //cambiar esto 
             data:   datosGraph[1], //cambiar esto 
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: ' rgba(255, 99, 132,1)',
@@ -421,7 +343,7 @@ export default class Graficas extends Component{
           },
           title: {
             display: true,
-            text: 'Ritmo vs Tiempo', //cambia esto 
+            text: 'Rango Movimiento vs Tiempo', //cambia esto 
             color:"white"
             
           },
@@ -429,13 +351,90 @@ export default class Graficas extends Component{
       }
     })  
   }
+  CalquemvTiempo=async()=>{
+    const url="http://localhost:4000/api/Practica2/Calorias"
+    let config={
+        method:'GET',       //ELEMENTOS A ENVIAR
+        headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+    }
+     //la url
+     //la forma en la que vienen los datos 
+    const res= await fetch(url,config)
+    const data_res =await res.json()
+    console.log(data_res)
+    console.log(typeof(data_res[0].fecha))
+    let datosGraph=this.datos_graphCq(data_res)
+    if (datosGraph[0].length==0){
+      alert("No existen datos en esas fechas")
+    }
+    this.setState({
+      Data:  {
+        labels:datosGraph[0], //cambiar esto 
+        datasets:[
+          {
+            label:"Calorias", //cambiar esto 
+            data:   datosGraph[1], //cambiar esto 
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: ' rgba(255, 99, 132,1)',
+            color:"white"
+          
+          }
+        ],
+      },
+      options:  {
+        responsive: true,
+        scales: {
+            yAxes:{
+                grid: {
+                    drawBorder: true,
+                    color: '#FFFFFF',
+                },
+                ticks:{
+                    beginAtZero: true,
+                    color: 'white',
+                    fontSize: 12,
+                }
+            },
+            xAxes: {
+                grid: {
+                    drawBorder: true,
+                    color: '#FFFFFF',
+                },
+                ticks:{
+                    beginAtZero: true,
+                    color: 'white',
+                    fontSize: 12,
+                }
+            },
+        },
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+                color: "white", 
+                font: {
+                  size: 18
+                }
+              }
+          },
+          title: {
+            display: true,
+            text: 'Calorias quemadas vs Tiempo', //cambia esto 
+            color:"white"
+            
+          },
+        },
+      }
+    })  
+}
 
-  datos_graph(datos){
+  datos_graphFc(datos){
     let datos_g=[]
     let labels=[]
     let values=[]
-    let di= this.state.dateInit.split("-")
-    let df= this.state.dateFinish.split("-")
     let date_i=new Date(this.state.dateInit.replace(/-/g, '\/'))
     let date_f=new Date(this.state.dateFinish.replace(/-/g, '\/'))    
     for (let x=date_i; x<=date_f; date_i.setDate(date_i.getDate() + 1)){
@@ -451,8 +450,8 @@ export default class Graficas extends Component{
       let fecha=`${date_i.getFullYear()}-${mes}-${dia}`
       console.log(fecha)
       for(let i=0; i<datos.length;i++){
-        if (datos[i].fecha.includes(fecha)){
-          values.push(datos[i].fuerza_g)
+        if (datos[i].fecha.includes(fecha) && datos[i].usuarioID==this.state.id){
+          values.push(datos[i].pulsoCard)
           labels.push(datos[i].fecha)
         }
       }
@@ -461,7 +460,7 @@ export default class Graficas extends Component{
     return datos_g
   }
 
-  datos_graphvel(datos){
+  datos_graphRm(datos){
     let datos_g=[]
     let labels=[]
     let values=[]
@@ -480,8 +479,8 @@ export default class Graficas extends Component{
       let fecha=`${date_i.getFullYear()}-${mes}-${dia}`
       console.log(fecha)
       for(let i=0; i<datos.length;i++){
-        if (datos[i].fecha.includes(fecha)){
-          values.push(datos[i].vel_g)
+        if (datos[i].fecha.includes(fecha) && datos[i].usuarioID==this.state.id){
+          values.push(datos[i].rango)
           labels.push(datos[i].fecha)
         }
       }
@@ -490,7 +489,9 @@ export default class Graficas extends Component{
     return datos_g
   }
 
-  datos_graphrit(datos){
+  datos_graphCq(datos){
+    console.log("AAAAAAAAAA")
+    console.log(datos)
     let datos_g=[]
     let labels=[]
     let values=[]
@@ -509,8 +510,8 @@ export default class Graficas extends Component{
       let fecha=`${date_i.getFullYear()}-${mes}-${dia}`
       console.log(fecha)
       for(let i=0; i<datos.length;i++){
-        if (datos[i].fecha.includes(fecha)){
-          values.push(datos[i].ritmo_g)
+        if (datos[i].fecha.includes(fecha) && datos[i].usuarioID==this.state.id){
+          values.push(datos[i].caloriasQuem)
           labels.push(datos[i].fecha)
         }
       }
