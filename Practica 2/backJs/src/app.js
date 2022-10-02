@@ -23,10 +23,19 @@ parser.on('data', (line)=>{
         console.log(line);
     }else if (words.length == 6) {
         practica.postearUsuario(line);
+        console.log("Despues de usuario")
         var datos;
-        var promise = fetch('http://localhost:4000/api/Practica2/Usuario')
-        .then((response) => datos= response.json())
-        .then((data) => console.log(data));
+
+        var promise = new Promise(function(resolve, reject) {
+        fetch('http://localhost:4000/api/Practica2/Usuario')
+        .then(res => res.json())
+        .then(data =>{console.log(data);
+            datos= data;
+        });
+        })
+        promise.then(bool => console.log('Bool is true'))
+        
+
 /*
         var promise = new Promise(function(resolve, reject) {
             fetch('http://localhost:4000/api/Practica2/Usuario'
@@ -46,6 +55,7 @@ parser.on('data', (line)=>{
           })
           promise.then(bool => console.log('Bool is true'))
 */      
+
         var idus = JSON.parse(datos);
         console.log(idus.length);
         practica.postearDatUsuario(line ,idus );
