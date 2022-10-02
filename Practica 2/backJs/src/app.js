@@ -31,10 +31,16 @@ parser.on('data', (line)=>{
         .then(res => res.json())
         .then(data =>{console.log(data);
             datos= data;
+
+            console.log("datos");
+            console.log(datos);
+            var idus= 1;
+          //var idus = JSON.parse(datos);
+          //console.log(idus.length);
+          practica.postearDatUsuario(line ,idus );
         });
         })
-        promise.then(bool => console.log('Bool is true'))
-        
+        promise.then(bool => console.log('Bool is true'))     
 
 /*
         var promise = new Promise(function(resolve, reject) {
@@ -55,12 +61,7 @@ parser.on('data', (line)=>{
           })
           promise.then(bool => console.log('Bool is true'))
 */      
-console.log("datos");
-          console.log(datos);
-          var idus= 1;
-        //var idus = JSON.parse(datos);
-        //console.log(idus.length);
-        practica.postearDatUsuario(line ,idus );
+       
     }else if (words[0]=="3") {
         //postearVelocidad(line);
     }
