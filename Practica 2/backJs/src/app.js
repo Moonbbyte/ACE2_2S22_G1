@@ -32,6 +32,8 @@ parser.on('data', (line)=>{
             console.log("datos");
             
             console.log(datos);
+            console.log(Object.keys(datos.id).length);
+
             var myJson = JSON.parse(datos);
             console.log("mi variable: "+myJson["id"]);
 
