@@ -27,7 +27,7 @@ parser.on('data', (line)=>{
         fetch('http://localhost:4000/api/Practica2/Usuario')
         .then(res => res.json())
         .then(data =>{console.log(data);
-            datos= data;
+            datos = JSON.stringify(data);
 
             console.log("datos");
             console.log(datos);
