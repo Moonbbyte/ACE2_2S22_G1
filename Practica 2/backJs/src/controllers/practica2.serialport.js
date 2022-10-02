@@ -110,7 +110,7 @@ const postearFrecCard = (bodVelocidad)=>{
 
 const postearDatUsuario = (bodVelocidad , idUs)=>{
     const words = bodVelocidad.split(',');
-    console.log(words);
+    //console.log(words);
     const myJSON = { "edad": words[2], "peso": words[3],"genero":words[4], "estatura": words[5].replace('\r',''), "usuarioID": idUs};
     //console.log(myJSON)
 
@@ -135,7 +135,7 @@ const postearDatUsuario = (bodVelocidad , idUs)=>{
 const postearUsuario = (bodVelocidad)=>{
 
     const words = bodVelocidad.split(',');
-    console.log(words);
+    //console.log(words);
     const myJSON = { "nombreUsu": words[0], "pass": words[1] };
     //console.log(myJSON)
 

@@ -13,7 +13,7 @@ port.pipe(parser);
 
 parser.on('data', (line)=>{
     const words = line.split(',');
-    console.log(words);
+    //console.log(words);
     if (words.length == 4) {
         practica.postearCalorias(line);
         practica.postearFrecuenciaRep(line);
@@ -29,13 +29,8 @@ parser.on('data', (line)=>{
         .then(data =>{console.log(data);
             datos = JSON.stringify(data);
 
-            console.log("datos");
-            
-            console.log(JSON.stringify(data));
-            console.log(Object.keys(data).length);
-
             var idus = Object.keys(data).length;
-            console.log(idus);
+            
           practica.postearDatUsuario(line ,idus );
         });
         })
