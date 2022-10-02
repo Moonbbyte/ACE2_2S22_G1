@@ -31,13 +31,13 @@ parser.on('data', (line)=>{
 
             console.log("datos");
             
-            console.log(datos);
-            console.log(Object.keys(datos[0].id).length);
+            console.log(data);
+            console.log(Object.keys(data[0].id).length);
 
-            var myJson = JSON.parse(datos);
+            var myJson = JSON.parse(data);
             console.log("mi variable: "+myJson[0].id);
 
-            var idus = datos.id;
+            var idus = data[0].id;
             console.log(idus);
           practica.postearDatUsuario(line ,idus );
         });
