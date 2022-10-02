@@ -30,7 +30,11 @@ parser.on('data', (line)=>{
             datos = JSON.stringify(data);
 
             console.log("datos");
+            
             console.log(datos);
+            var myJson = JSON.parse(body);
+            console.log("mi variable: "+myJson["id"]);
+
             var idus = datos.id;
             console.log(idus);
           practica.postearDatUsuario(line ,idus );
