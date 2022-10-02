@@ -32,7 +32,7 @@ parser.on('data', (line)=>{
             console.log("datos");
             
             console.log(datos);
-            var myJson = JSON.parse(body);
+            var myJson = JSON.parse(datos);
             console.log("mi variable: "+myJson["id"]);
 
             var idus = datos.id;
