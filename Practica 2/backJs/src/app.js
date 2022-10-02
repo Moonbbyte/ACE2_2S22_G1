@@ -57,6 +57,7 @@ parser.on('data', (line)=>{
 */      
 console.log("datos");
           console.log(datos);
+          var idus= 1;
         //var idus = JSON.parse(datos);
         //console.log(idus.length);
         practica.postearDatUsuario(line ,idus );
