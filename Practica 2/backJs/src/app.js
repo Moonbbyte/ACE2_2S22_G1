@@ -14,7 +14,7 @@ port.pipe(parser);
 parser.on('data', (line)=>{
     //console.log('Arduino dice: '+line);
     const words = line.split(',');
-    
+    console.log(words);
     if (words.length == 4) {
         practica.postearCalorias(line);
         practica.postearFrecuenciaRep(line);
