@@ -34,10 +34,7 @@ parser.on('data', (line)=>{
             console.log(JSON.stringify(data));
             console.log(Object.keys(data).length);
 
-            var myJson = JSON.parse(data);
-            console.log("mi variable: "+myJson.length);
-
-            var idus = data[0].id;
+            var idus = Object.keys(data).length;
             console.log(idus);
           practica.postearDatUsuario(line ,idus );
         });
