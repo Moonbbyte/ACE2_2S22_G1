@@ -31,11 +31,11 @@ parser.on('data', (line)=>{
 
             console.log("datos");
             
-            console.log(data);
-            console.log(Object.keys(data[0].id).length);
+            console.log(JSON.stringify(data));
+            console.log(Object.keys(data).length);
 
             var myJson = JSON.parse(data);
-            console.log("mi variable: "+myJson[0].id);
+            console.log("mi variable: "+myJson.length);
 
             var idus = data[0].id;
             console.log(idus);
