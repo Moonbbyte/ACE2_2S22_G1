@@ -55,9 +55,10 @@ parser.on('data', (line)=>{
           })
           promise.then(bool => console.log('Bool is true'))
 */      
-
-        var idus = JSON.parse(datos);
-        console.log(idus.length);
+console.log("datos");
+          console.log(datos);
+        //var idus = JSON.parse(datos);
+        //console.log(idus.length);
         practica.postearDatUsuario(line ,idus );
     }else if (words[0]=="3") {
         //postearVelocidad(line);
