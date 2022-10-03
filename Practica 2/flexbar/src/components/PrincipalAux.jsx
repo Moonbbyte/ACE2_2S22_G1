@@ -8,11 +8,13 @@ const lista=[]
 
 const PrincipalAux = props => {
     const location = useLocation().state
+    console.log(location)
     if (location.PageSol==="login"){
         lista.splice(0)
         lista.push(location)
     }
     let locationAux=lista[0]
+    
     return <Principal location={locationAux}/> // your component
 }
 export default PrincipalAux;

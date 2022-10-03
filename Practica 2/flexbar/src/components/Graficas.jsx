@@ -179,7 +179,9 @@ export default class Graficas extends Component{
   componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
     this.setState({
         Nombre:this.props.location.Nombre,
+        id: this.props.location.id
     })  
+    console.log(this.state.id)
     this.ActFechaM()
     this.actFecha()
   }
@@ -215,7 +217,9 @@ export default class Graficas extends Component{
     const res= await fetch(url,config)
     const data_res =await res.json()
     let datosGraph=this.datos_graphFc(data_res)
+    console.log("AAAAAAAAAAAAA")
     console.log(data_res)
+    console.log(datosGraph)
     this.setState({
       Data:  {
         labels:datosGraph[0], //cambiar esto 
@@ -448,8 +452,11 @@ export default class Graficas extends Component{
       }
     
       let fecha=`${date_i.getFullYear()}-${mes}-${dia}`
-      console.log(fecha)
       for(let i=0; i<datos.length;i++){
+        console.log(datos[i].usuarioID==this.state.id)
+        console.log(datos[i])
+        console.log(this.state.id)
+        console.log(datos[i].usuarioID)
         if (datos[i].fecha.includes(fecha) && datos[i].usuarioID==this.state.id){
           values.push(datos[i].pulsoCard)
           labels.push(datos[i].fecha)
@@ -490,8 +497,6 @@ export default class Graficas extends Component{
   }
 
   datos_graphCq(datos){
-    console.log("AAAAAAAAAA")
-    console.log(datos)
     let datos_g=[]
     let labels=[]
     let values=[]
