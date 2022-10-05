@@ -48,7 +48,7 @@ parser.on('data', (line)=>{
 
             words[1].replace('\r','');
             var idus = Object.keys(data);
-            idus.forEach(element => {
+            datos.forEach(element => {
                 if (element.nombreUsu == words[0] && element.pass == words[1] ) {
                     console.log(element);
                     login = element.id;
