@@ -50,6 +50,7 @@ parser.on('data', (line)=>{
             var idus = Object.keys(data);
             idus.forEach(element => {
                 if (element.nombreUsu == words[0] && element.pass == words[1] ) {
+                    console.log(element);
                     login = element.id;
                     console.log(login);
                     port.write("1");
