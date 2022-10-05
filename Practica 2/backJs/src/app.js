@@ -4,7 +4,7 @@ import SerialPort from "serialport";
 import { methods as practica } from "./controllers/practica2.serialport";
 import fetch from 'cross-fetch';
 
-var login = 0;
+var login ;
 
 // Import dependencies
 const port = new SerialPort('COM3',{baudRate: 9600});
@@ -47,7 +47,7 @@ parser.on('data', (line)=>{
             data.forEach(element => {
                 if (element.nombreUsu == words[0] && element.pass == words[1] ) {
                     console.log(element);
-                    login = element.id;
+                    this.login = element.id;
                     console.log(login);
                     port.write("1");
                 }else {
