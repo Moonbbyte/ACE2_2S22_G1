@@ -12,10 +12,10 @@ let seconds = date_ob.getSeconds();
 
 let fechaAct = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds
 
-const postearCalorias = (bodFuerza)=>{
+const postearCalorias = (bodFuerza,id)=>{
 
     const words = bodFuerza.split(',');
-    const myJSON = { "caloriasQuem": words[2].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "caloriasQuem": words[2].replace('\r',''), "fecha": fechaAct,"usuarioID":id };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
@@ -36,10 +36,10 @@ const postearCalorias = (bodFuerza)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearFrecuenciaRep = (bodRitmo)=>{
+const postearFrecuenciaRep = (bodRitmo, id)=>{
 
     const words = bodRitmo.split(',');
-    const myJSON = { "vel_rep": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "vel_rep": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID": id };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
@@ -60,10 +60,10 @@ const postearFrecuenciaRep = (bodRitmo)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearRango = (bodVelocidad)=>{
+const postearRango = (bodVelocidad, id)=>{
 
     const words = bodVelocidad.split(',');
-    const myJSON = { "rango": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "rango": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID": id };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
@@ -84,10 +84,10 @@ const postearRango = (bodVelocidad)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearFrecCard = (bodVelocidad)=>{
+const postearFrecCard = (bodVelocidad, id)=>{
 
     const words = bodVelocidad.split(',');
-    const myJSON = { "pulsoCard": words[3].replace('\r',''), "fecha": fechaAct,"usuarioID":"1" };
+    const myJSON = { "pulsoCard": words[3].replace('\r',''), "fecha": fechaAct,"usuarioID":id };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {

@@ -4,6 +4,7 @@ import SerialPort from "serialport";
 import { methods as practica } from "./controllers/practica2.serialport";
 import fetch from 'cross-fetch';
 
+var login = 0;
 
 // Import dependencies
 const port = new SerialPort('COM3',{baudRate: 9600});
@@ -15,10 +16,10 @@ parser.on('data', (line)=>{
     const words = line.split(',');
     //console.log(words);
     if (words.length == 4) {
-        practica.postearCalorias(line);
-        practica.postearFrecuenciaRep(line);
-        practica.postearRango(line);
-        practica.postearFrecCard(line);
+        practica.postearCalorias(line,login);
+        practica.postearFrecuenciaRep(line,login);
+        practica.postearRango(line,login);
+        practica.postearFrecCard(line,login);
         console.log(line);
     }else if (words.length == 6) {
         practica.postearUsuario(line);
@@ -36,8 +37,30 @@ parser.on('data', (line)=>{
         })
         promise.then(bool => console.log('Bool is true'))          
        
-    }else if (words[0]=="3") {
-        //postearVelocidad(line);
+    }else if (words.length == 2) {
+
+        var datos;
+        var promise = new Promise(function(resolve, reject) {
+        fetch('http://localhost:4000/api/Practica2/Usuario')
+        .then(res => res.json())
+        .then(data =>{console.log(data);
+            datos = JSON.stringify(data);
+
+            words[1].replace('\r','');
+            var idus = Object.keys(data);
+            idus.forEach(element => {
+                if (element.nombreUsu == words[0] && element.pass == words[1] ) {
+                    login = element.id;
+                    port.write("1");
+                }
+            });
+            if(login == 0){
+                port.write("0");
+            }
+            
+        });
+        })
+        promise.then(bool => console.log('Bool is true'))    
     }
 
 });
