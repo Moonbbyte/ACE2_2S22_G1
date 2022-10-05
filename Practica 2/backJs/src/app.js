@@ -37,7 +37,7 @@ parser.on('data', (line)=>{
         })
         promise.then(bool => console.log('Bool is true'))          
        
-    }else if (words.length == 2) {
+    }else if (words.length == 2 && words[0] != "") {
 
         var datos;
         var promise = new Promise(function(resolve, reject) {
