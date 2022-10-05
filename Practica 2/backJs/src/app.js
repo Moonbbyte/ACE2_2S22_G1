@@ -51,11 +51,13 @@ parser.on('data', (line)=>{
             idus.forEach(element => {
                 if (element.nombreUsu == words[0] && element.pass == words[1] ) {
                     login = element.id;
+                    console.log(login);
                     port.write("1");
                 }
             });
             if(login == 0){
                 port.write("0");
+                console.log(login);
             }
             
         });
