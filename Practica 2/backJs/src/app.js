@@ -14,7 +14,7 @@ port.pipe(parser);
 
 parser.on('data', (line)=>{
     const words = line.split(',');
-    console.log(line);
+    console.log(words);
     if (words.length == 4) {
         practica.postearCalorias(line,login);
         practica.postearFrecuenciaRep(line,login);
