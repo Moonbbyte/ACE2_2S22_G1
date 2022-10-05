@@ -39,21 +39,19 @@ parser.on('data', (line)=>{
        
     }else if (words.length == 3 && words[0].length > 1) {
 
-        var datos;
         var promise = new Promise(function(resolve, reject) {
         fetch('http://localhost:4000/api/Practica2/Usuario')
         .then(res => res.json())
         .then(data =>{console.log(data);
-            datos = JSON.stringify(data);
-
-            words[1].replace('\r','');
-            var idus = Object.keys(data);
+            words[2].replace('\r','');
             data.forEach(element => {
                 if (element.nombreUsu == words[0] && element.pass == words[1] ) {
                     console.log(element);
                     login = element.id;
                     console.log(login);
                     port.write("1");
+                }else {
+                    login = 0;
                 }
             });
             if(login == 0){
