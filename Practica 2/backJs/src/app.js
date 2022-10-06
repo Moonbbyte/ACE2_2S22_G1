@@ -4,7 +4,7 @@ import SerialPort from "serialport";
 import { methods as practica } from "./controllers/practica2.serialport";
 import fetch from 'cross-fetch';
 
-var login ;
+var login = 0;
 
 // Import dependencies
 const port = new SerialPort('COM3',{baudRate: 9600});
