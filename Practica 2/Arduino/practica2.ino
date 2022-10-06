@@ -96,7 +96,7 @@ void menu(){
       case 'a':
         registrarse();
         return;
-      case 'o':
+      case 'b':
         iniciosesion();
         return;
     }
@@ -215,81 +215,70 @@ void registrarse() {
 }
 
 void iniciosesion(){
-  delay(4000);
-  Usuariologged usuario;
-  int indice = 0; // Para posicionarnos en los arreglos
-  char caracter; // Almacena el caracter obtenido
-  char user[9] = "";
-  char pass[9]="";
-  char edad[4]="";
-  char peso[4]="";
-  char estatura[6]="";
-  char genero[6]="";
 
-  
-  // OBTENEMOS EL USERNAME
-  caracter = Serial.read();
-  Serial.println(caracter);
-  while (Serial.available()) {
-    caracter = Serial.read();
-    if (caracter != ',') {
-      usuario.username[indice] = caracter;
-      user[indice] += caracter;
-      indice++;
-    } else {
-      usuario.username[indice] = '\0';
-      break;
-    }
-  }
-
-  indice = 0;
-  while (Serial.available()) {
-    caracter = Serial.read();
-    if (caracter != ',') {
-      usuario.password[indice] = caracter;
-      pass[indice] += caracter;
-      indice++;
-    } else {
-      usuario.password[indice] = '\0';
-      break;
-    }
-  }
-
-
-   Serial.print(usuario.username);
-   Serial.print(',');
-   Serial.print(usuario.password);
-   
-while (Serial.available()) {
-    caracter = Serial.read();
-    if (caracter == '0') {
-      Serial.print("0");
-    } else {
-      Serial.print("1");
-      break;
-    }
-  }
-   
-  
-
-  
+//  Usuariologged usuario;
+//  int indice = 0; // Para posicionarnos en los arreglos
+//  char caracter; // Almacena el caracter obtenido
+//  char user[9] = "";
+//  char pass[9]="";
+//  char edad[4]="";
+//  char peso[4]="";
+//  char estatura[6]="";
+//  char genero[6]="";
+//
 //  
-//  bool salir = false;
-//  while(!salir){
-//    delay(500);
-//    if(Serial.available()>0){
-//    char opcion = Serial.read();
-//    switch(opcion){
-//      case 'a':
-//        inicioejercicio();
-//        return;
-//      case 'b':
-//        return;
+//  // OBTENEMOS EL USERNAME
+//  caracter = Serial.read();
+//  Serial.println(caracter);
+//  while (Serial.available()) {
+//    caracter = Serial.read();
+//    if (caracter != ',') {
+//      usuario.username[indice] = caracter;
+//      user[indice] += caracter;
+//      indice++;
+//    } else {
+//      usuario.username[indice] = '\0';
+//      break;
 //    }
 //  }
-//  
-//  
+//
+//  indice = 0;
+//  while (Serial.available()) {
+//    caracter = Serial.read();
+//    if (caracter != ',') {
+//      usuario.password[indice] = caracter;
+//      pass[indice] += caracter;
+//      indice++;
+//    } else {
+//      usuario.password[indice] = '\0';
+//      break;
+//    }
 //  }
+//
+//
+//Serial.print(usuario.username);
+//   Serial.print(',');
+//   Serial.print(usuario.password);
+//   Serial.print(',');
+
+  
+  
+  bool salir = false;
+  while(!salir){
+    delay(500);
+    if(Serial.available()>0){
+    char opcion = Serial.read();
+    switch(opcion){
+      case 'a':
+        inicioejercicio();
+        return;
+      case 'b':
+        return;
+    }
+  }
+  
+  
+  }
 
 }
 
@@ -384,16 +373,11 @@ void inicioejercicio(){
     delay(500);
     caracter = Serial.read();
     if (caracter == 'x') {
+      delay(5000);
     while (Serial.available()) {
       caracter = Serial.read();
-      if (caracter != ',') {
-        Serial.print(caracter);
-        indice++;
-      }
+        Serial.print(caracter); 
   }
-
-
-      
       break;
     }
   
