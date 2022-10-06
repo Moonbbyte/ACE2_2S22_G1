@@ -48,8 +48,8 @@ parser.on('data', (line)=>{
             var idus = Object.keys(data).length;
             for (let index = 0; index < idus; index++) {
                 if (data[index].nombreUsu == words[0] && data[index].pass == words[1] ) {
-                    console.log(element);
-                    login = element.id;
+                    console.log(data[index]);
+                    login = data[index].id;
                     console.log(login);
                     port.write("1");
                     break;
