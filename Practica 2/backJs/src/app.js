@@ -44,8 +44,10 @@ parser.on('data', (line)=>{
         .then(res => res.json())
         .then(data =>{console.log(data);
             words[2].replace('\r','');
-            data.forEach(element => {
-                if (element.nombreUsu == words[0] && element.pass == words[1] ) {
+
+            var idus = Object.keys(data).length;
+            for (let index = 0; index < idus; index++) {
+                if (data[index].nombreUsu == words[0] && data[index].pass == words[1] ) {
                     console.log(element);
                     login = element.id;
                     console.log(login);
@@ -54,7 +56,21 @@ parser.on('data', (line)=>{
                 }else {
                     login = 0;
                 }
+                
+            }
+            /*
+            data.forEach(element => {
+                if (element.nombreUsu == words[0] && element.pass == words[1] ) {
+                    console.log(element);
+                    login = element.id;
+                    console.log(login);
+                    port.write("1");
+                  
+                }else {
+                    login = 0;
+                }
             });
+            */
             if(login == 0){
                 port.write("0");
                 console.log(login);
