@@ -13,6 +13,7 @@ const parser = new SerialPort.parsers.Readline();
 port.pipe(parser);
 
 parser.on('data', (line)=>{
+    console.log(line);
     const words = line.split(',');
     console.log(words);
     if (words.length == 4) {
