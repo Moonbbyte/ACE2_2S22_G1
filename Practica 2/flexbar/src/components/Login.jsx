@@ -25,16 +25,16 @@ function Login (props){
         const res= await fetch(url,config)
         const data_res =await res.json()
         console.log(data_res)
+        let x=0;
         for(let i=0; i<data_res.length;i++){
-            console.log("SSSSSSss")
             if(data_res[i].nombreUsu==user && data_res[i].pass==password){    
                 navigate("/pAux",{state:{id:data_res[i].id,Nombre:user,PageSol:"login"}})
-            }else{
-                alert("Contraseña o Usuario Incorrectos")
+                x=1
             }
         }
-           
-       
+        if(x===0){
+            alert("Contraseña o Usuario Incorrectos")
+        }   
     }
     return(
         <React.Fragment>
