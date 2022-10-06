@@ -50,6 +50,7 @@ parser.on('data', (line)=>{
                     login = element.id;
                     console.log(login);
                     port.write("1");
+                    break;
                 }else {
                     login = 0;
                 }
