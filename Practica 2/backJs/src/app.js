@@ -33,7 +33,7 @@ parser.on('data', (line)=>{
 
             var idus = Object.keys(data).length;
             
-          practica.postearDatUsuario(line ,data[idus].id );
+          practica.postearDatUsuario(line ,data[idus-1].id );
         });
         })
         promise.then(bool => console.log('Bool is true'))          
