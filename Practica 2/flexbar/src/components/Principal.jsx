@@ -191,6 +191,7 @@ export default class Principal extends Component{
         const res2= await fetch(url2,config)
         let data2 =await res2.json()
         data2=this.clear_list(data2,id)
+        
         n_entr+=data2.length
           //rango maximo de movimiento
         data2.forEach((e)=>{
@@ -231,13 +232,11 @@ export default class Principal extends Component{
     }
     
     clear_list(array,id){
-
         for(let i=array.length-1; i>=0;i--){
             if (array[i].usuarioID!=id){
-                array[i].splice(i,1)
+                array.splice(i,1)
             }
-        }
-       
+        }  
         array=this.datos_rfecha(array)
         return array
     }
