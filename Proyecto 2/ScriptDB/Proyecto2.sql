@@ -1,5 +1,5 @@
-CREATE database Practica2_Barras;
-use Practica2_Barras;
+CREATE database Proyecto2_Box;
+use Proyecto2_Box;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 --SET time_zone="+00:00";
 
