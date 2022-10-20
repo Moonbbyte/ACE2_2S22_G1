@@ -39,7 +39,7 @@ const postearCalorias = (bodFuerza,id)=>{
 const postearFuerza = (bodRitmo, id)=>{
 
     const words = bodRitmo.split(',');
-    if (words[0] != '0') {
+    if (words[0] != '0.00') {
         const myJSON = { "fuerza_imp": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID": id };
         //console.log(myJSON)
     
