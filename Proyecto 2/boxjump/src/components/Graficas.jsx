@@ -158,9 +158,9 @@ export default class Graficas extends Component{
                        
                         <div className="row mt-5" id="buttonsExp">
                             <div className="btn-group-vertical col-9" id="Exp-Component">
-                                <button className="btnEffect btn btn-dark" onClick={()=>this.FcvTiempo()} >Frecuencia Cardiaca</button>
-                                <button className="btnEffect btn btn-dark" onClick={()=>this.RmvTiempo()} >Rango de Movimiento</button>
-                                <button className="btnEffect btn btn-dark" onClick={()=>this.CalquemvTiempo()}>Calorias Quemadas</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.FcvTiempo()} >Delta Fuerza</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.RmvTiempo()} >Delta Calorias</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.CalquemvTiempo()}>Tiempo Zona de Ritmo</button>
                             </div>
                         </div>
                     </div>
@@ -217,7 +217,7 @@ export default class Graficas extends Component{
     const res= await fetch(url,config)
     const data_res =await res.json()
     let datosGraph=this.datos_graphFc(data_res)
-    console.log("AAAAAAAAAAAAA")
+   
     console.log(data_res)
     console.log(datosGraph)
     this.setState({
