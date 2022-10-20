@@ -51,6 +51,12 @@ body{
   top: 30px;
 }
 
+#UpdateDash{
+  position: absolute;
+  top: 280px;
+  left: 10px;
+}
+
 .texthelp{
   color: white;
 }

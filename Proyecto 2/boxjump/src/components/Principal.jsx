@@ -14,13 +14,14 @@ export default class Principal extends Component{
             Peso:"150",
             Genero:"Masculino",
             Estatura:"1.82",
-            dateInit:"2022-09-30",
-            dateFinish:"2022-10-02",
+            dateInit:"2022-10-20",
+            dateFinish:"2022-10-21",
             //Tiempo total de entrenamiento
             nrep:10, //numero de repeticiones
             rmaxMov:0,
             calQuem:13,
-            tent: 8,
+            Nent: 8,
+            tent: "2h 30min",
             rpromMov:12,
             id:-1
         }
@@ -42,9 +43,14 @@ export default class Principal extends Component{
                 <h5>Genero: {this.state.Genero}</h5>
                 <h5>Estatura: {this.state.Estatura} </h5>
             </div>
+         
+            <button className="btn btn-dark btnEffect col-2"  id="UpdateDash" 
+            onClick={()=>{this.DatosDash(this.props.location.id)}}>Actualizar datos</button>
+
             <div className='container bg-dark col-3' id="RangoFecha">
                 <h5>Rango de Fecha: </h5>
                 <hr></hr>
+                
                 <div className='row'> Inicio:</div>
                 <div className='row'>
                     <input type="date" id="fechaInit" className="btn btn-dark col-9" min="2020-01-01" max="2023-12-31"
@@ -61,60 +67,35 @@ export default class Principal extends Component{
                 
             </div>
             <div className='container bg-dark col-8' id="Dashboard">
-                <div className="row">
+               <div className="row">
                     <div className="col-6">
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Numero de Repeticiones</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.nrep}</h4>
-                            </div>
-                        </div>
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Rango Maximo de Movimiento</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.rmaxMov}</h4>
-                            </div>
-                        </div>
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Calorias Quemadas</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.calQuem}</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-6">
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Tiempo total de entrenamiento</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.tent}</h4>
-                            </div>
-                        </div>
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Rango Promedio de Movimiento</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.rpromMov}</h4>
-                            </div>
-                        </div>
+                        <h4>Tiempo total de Entrenamiento</h4>
+                        <hr />
                         <div className="row">
-                            <img  src={require("../images/flex.png")} width="100%" height="100%" />
+                            <div className="col-6">
+                                <img  width="100%" height="100%" src={require("../images/time.png")}    />
+                            </div>
+                            <div className="col-6">
+                                {this.state.tent}
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div className="col-6">
+                        <h4>Numero total de entrenamientos</h4>
+                        <hr />
+                        <div className="row">
+                            <div className="col-6">
+
+                            </div>
+                            <div className="col-6">
+                                {this.state.Nent}
+                            </div>
+                        </div>
+                    </div>
+               </div>
+               <div className="row">
+
+               </div>
             </div>
             </React.Fragment> 
         )
@@ -122,6 +103,7 @@ export default class Principal extends Component{
 
     }
     componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
+        /*
         this.setState({
             id:this.props.location.id
         })
@@ -130,7 +112,7 @@ export default class Principal extends Component{
         setInterval(() => {
             this.DatosDash(this.props.location.id)
         }, 10000);
-        
+        */
     }
     DatosUser=async(id,nombre)=>{
         const url="http://localhost:4000/api/Practica2/DataUsu"
