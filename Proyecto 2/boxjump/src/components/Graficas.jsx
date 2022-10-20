@@ -116,8 +116,8 @@ export default class Graficas extends Component{
         id:1,
         options:options,
         Data:data,
-        dateInit:"2022-10-01",
-        dateFinish:"2022-10-10",
+        dateInit:"2022-10-20",
+        dateFinish:"2022-10-22",
         PageSol:"graficas"
     }
   }
