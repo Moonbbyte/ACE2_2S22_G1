@@ -18,9 +18,9 @@ parser.on('data', (line)=>{
     console.log(words);
     if (words.length == 4) {
         practica.postearCalorias(line,login);
-        practica.postearFrecuenciaRep(line,login);
-        practica.postearRango(line,login);
-        practica.postearFrecCard(line,login);
+        practica.postearFuerza(line,login);
+        practica.postearRitmo(line,login);
+        //practica.postearFrecCard(line,login);
         console.log(line);
     }else if (words.length == 6) {
         practica.postearUsuario(line);

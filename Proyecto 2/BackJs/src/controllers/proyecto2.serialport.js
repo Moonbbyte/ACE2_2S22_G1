@@ -11,15 +11,15 @@ let minutes = date_ob.getMinutes();
 let seconds = date_ob.getSeconds();
 
 let fechaAct = year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds
-
+// fuerza, calorias,ritmo,ritmo2
 const postearCalorias = (bodFuerza,id)=>{
 
     const words = bodFuerza.split(',');
-    const myJSON = { "caloriasQuem": words[2].replace('\r',''), "fecha": fechaAct,"usuarioID":id };
+    const myJSON = { "caloriasQuem": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID":id };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/Calorias'
+        fetch('http://localhost:4000/api/Proyecto2/Calorias'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -36,14 +36,14 @@ const postearCalorias = (bodFuerza,id)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearFrecuenciaRep = (bodRitmo, id)=>{
+const postearFuerza = (bodRitmo, id)=>{
 
     const words = bodRitmo.split(',');
-    const myJSON = { "vel_rep": words[1].replace('\r',''), "fecha": fechaAct,"usuarioID": id };
+    const myJSON = { "fuerza_imp": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID": id };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/FrecuenciaRep'
+        fetch('http://localhost:4000/api/Proyecto2/FuerzaImp'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -60,14 +60,14 @@ const postearFrecuenciaRep = (bodRitmo, id)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearRango = (bodVelocidad, id)=>{
+const postearRitmo = (bodVelocidad, id)=>{
 
     const words = bodVelocidad.split(',');
-    const myJSON = { "rango": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID": id };
+    const myJSON = { "ritmo": words[2].replace('\r',''), "fecha": fechaAct,"usuarioID": id };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/Rango'
+        fetch('http://localhost:4000/api/Proyecto2/Ritmo'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const postearFrecCard = (bodVelocidad, id)=>{
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/Frecuencia'
+        fetch('http://localhost:4000/api/Proyecto2/Frecuencia'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -115,7 +115,7 @@ const postearDatUsuario = (bodVelocidad , idUs)=>{
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/DataUsu'
+        fetch('http://localhost:4000/api/Proyecto2/DataUsu'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -140,7 +140,7 @@ const postearUsuario = (bodVelocidad)=>{
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/Usuario'
+        fetch('http://localhost:4000/api/Proyecto2/Usuario'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -159,8 +159,8 @@ const postearUsuario = (bodVelocidad)=>{
 
 export const methods = {
     postearCalorias,
-    postearFrecuenciaRep,
-    postearRango,
+    postearFuerza,
+    postearRitmo,
     postearFrecCard,
     postearDatUsuario,
     postearUsuario
