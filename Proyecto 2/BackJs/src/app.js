@@ -26,7 +26,7 @@ parser.on('data', (line)=>{
         practica.postearUsuario(line);
         var datos;
         var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/Usuario')
+        fetch('http://localhost:4000/api/Proyecto2/Usuario')
         .then(res => res.json())
         .then(data =>{console.log(data);
             datos = JSON.stringify(data);
