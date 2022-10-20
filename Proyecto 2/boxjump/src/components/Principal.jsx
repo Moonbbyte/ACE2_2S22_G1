@@ -17,12 +17,13 @@ export default class Principal extends Component{
             dateInit:"2022-10-20",
             dateFinish:"2022-10-21",
             //Tiempo total de entrenamiento
-            nrep:10, //numero de repeticiones
-            rmaxMov:0,
-            calQuem:13,
             Nent: 8,
             tent: "2h 30min",
-            rpromMov:12,
+            fimpulso: 123,
+            vimpulso:23,
+            ritmo:13,
+            calorias:12,
+            peso:16,
             id:-1
         }
     }
@@ -73,7 +74,7 @@ export default class Principal extends Component{
                         <hr />
                         <div className="row">
                             <div className="col-6">
-                                <img  width="100%" height="100%" src={require("../images/time.png")}    />
+                                <img  width="80%" height="80%" src={require("../images/time.png")}    />
                             </div>
                             <div className="col-6">
                                 {this.state.tent}
@@ -85,7 +86,7 @@ export default class Principal extends Component{
                         <hr />
                         <div className="row">
                             <div className="col-6">
-
+                                <img width="80%" height="80%" src={require("../images/boxjump.png")} />
                             </div>
                             <div className="col-6">
                                 {this.state.Nent}
@@ -94,7 +95,69 @@ export default class Principal extends Component{
                     </div>
                </div>
                <div className="row">
-
+                    <div className="col-4">
+                        <h5>Fuerza de Impulso</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="50%" height="60%" src={require("../images/force.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.fimpulso}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <h5>Velocidad de Impulso</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="50%" height="60%" src={require("../images/fast.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.vimpulso}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <h5>Ritmo</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="50%" height="60%" src={require("../images/ritmo.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.ritmo}
+                            </div>
+                        </div>
+                    </div>
+               </div>
+               <div className="row">
+                    <div className="col-4">
+                        <h5>Calorias</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="40%" height="60%" src={require("../images/calquem.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.calorias}
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div className="col-4">
+                        <h5>Peso</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="50%" height="60%" src={require("../images/cardio.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.peso}
+                            </div>
+                        </div>
+                    </div>
                </div>
             </div>
             </React.Fragment> 
