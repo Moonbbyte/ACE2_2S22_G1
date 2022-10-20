@@ -87,14 +87,14 @@ const postearRitmo = (bodVelocidad, id)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearFrecCard = (bodVelocidad, id)=>{
+const postearPeso = (bodVelocidad, id)=>{
 
     const words = bodVelocidad.split(',');
-    const myJSON = { "pulsoCard": words[3].replace('\r',''), "fecha": fechaAct,"usuarioID":id };
+    const myJSON = { "peso": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID":id };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Proyecto2/Frecuencia'
+        fetch('http://localhost:4000/api/Proyecto2/Peso'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ export const methods = {
     postearCalorias,
     postearFuerza,
     postearRitmo,
-    postearFrecCard,
+    postearPeso,
     postearDatUsuario,
     postearUsuario
 };
