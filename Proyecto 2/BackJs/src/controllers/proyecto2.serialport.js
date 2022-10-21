@@ -39,25 +39,28 @@ const postearCalorias = (bodFuerza,id)=>{
 const postearFuerza = (bodRitmo, id)=>{
 
     const words = bodRitmo.split(',');
-    const myJSON = { "fuerza_imp": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID": id };
-    //console.log(myJSON)
-
-    var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Proyecto2/FuerzaImp'
-        ,{
-        headers : { 
-            'Content-Type': 'application/json',
-            
-        },
-        method: "POST",
-        body: JSON.stringify(myJSON)
-        }
-        )
-        .then(function(res){  })
-        .catch(function(res){ })
-   
-      })
-      promise.then(bool => console.log('Bool is true'))
+    if (words[0] != '0.00') {
+        const myJSON = { "fuerza_imp": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID": id };
+        //console.log(myJSON)
+    
+        var promise = new Promise(function(resolve, reject) {
+            fetch('http://localhost:4000/api/Proyecto2/FuerzaImp'
+            ,{
+            headers : { 
+                'Content-Type': 'application/json',
+                
+            },
+            method: "POST",
+            body: JSON.stringify(myJSON)
+            }
+            )
+            .then(function(res){  })
+            .catch(function(res){ })
+       
+          })
+          promise.then(bool => console.log('Bool is true'))
+    }
+ 
 };
 
 const postearRitmo = (bodVelocidad, id)=>{
@@ -84,14 +87,14 @@ const postearRitmo = (bodVelocidad, id)=>{
       promise.then(bool => console.log('Bool is true'))
 };
 
-const postearFrecCard = (bodVelocidad, id)=>{
+const postearPeso = (bodVelocidad, id)=>{
 
     const words = bodVelocidad.split(',');
-    const myJSON = { "pulsoCard": words[3].replace('\r',''), "fecha": fechaAct,"usuarioID":id };
+    const myJSON = { "peso": words[0].replace('\r',''), "fecha": fechaAct,"usuarioID":id };
     //console.log(myJSON)
 
     var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Proyecto2/Frecuencia'
+        fetch('http://localhost:4000/api/Proyecto2/Peso'
         ,{
         headers : { 
             'Content-Type': 'application/json',
@@ -161,7 +164,7 @@ export const methods = {
     postearCalorias,
     postearFuerza,
     postearRitmo,
-    postearFrecCard,
+    postearPeso,
     postearDatUsuario,
     postearUsuario
 };

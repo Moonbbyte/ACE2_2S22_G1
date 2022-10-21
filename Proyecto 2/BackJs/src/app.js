@@ -38,48 +38,8 @@ parser.on('data', (line)=>{
         })
         promise.then(bool => console.log('Bool is true'))          
        
-    }else if (words.length == 3 && words[0].length > 1) {
-
-        var promise = new Promise(function(resolve, reject) {
-        fetch('http://localhost:4000/api/Practica2/Usuario')
-        .then(res => res.json())
-        .then(data =>{console.log(data);
-            words[2].replace('\r','');
-
-            var idus = Object.keys(data).length;
-            for (let index = 0; index < idus; index++) {
-                if (data[index].nombreUsu == words[0] && data[index].pass == words[1] ) {
-                    console.log(data[index]);
-                    login = data[index].id;
-                    console.log(login);
-                    port.write("1");
-                    break;
-                }else {
-                    login = 0;
-                }
-                
-            }
-            /*
-            data.forEach(element => {
-                if (element.nombreUsu == words[0] && element.pass == words[1] ) {
-                    console.log(element);
-                    login = element.id;
-                    console.log(login);
-                    port.write("1");
-                  
-                }else {
-                    login = 0;
-                }
-            });
-            */
-            if(login == 0){
-                port.write("0");
-                console.log(login);
-            }
-            
-        });
-        })
-        promise.then(bool => console.log('Bool is true'))    
+    }else if (words.length == 2 ) {
+        practica.postearPeso(line,login);
     }
 
 });
