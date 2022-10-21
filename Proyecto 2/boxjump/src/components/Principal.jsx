@@ -9,18 +9,18 @@ export default class Principal extends Component{
     constructor() {
         super();
         this.state={
-            Nombre:"Default",
-            Edad:"18",
+            Nombre:"Osmar Peña",
+            Edad:"21",
             Peso:"150",
             Genero:"Masculino",
             Estatura:"1.82",
             dateInit:"2022-10-20",
-            dateFinish:"2022-10-21",
+            dateFinish:"2022-10-22",
             //Tiempo total de entrenamiento
             Nent: 8,
-            tent: "2h 30min",
+            tent: "30min",
             fimpulso: 123,
-            vimpulso:23,
+            vimpulso:0,
             ritmo:13,
             calorias:12,
             peso:16,
@@ -46,7 +46,7 @@ export default class Principal extends Component{
             </div>
          
             <button className="btn btn-dark btnEffect col-2"  id="UpdateDash" 
-            onClick={()=>{this.DatosDash(this.props.location.id)}}>Actualizar datos</button>
+            onClick={()=>{this.DatosDash()}}>Actualizar datos</button>
 
             <div className='container bg-dark col-3' id="RangoFecha">
                 <h5>Rango de Fecha: </h5>
@@ -166,60 +166,29 @@ export default class Principal extends Component{
 
     }
     componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
+    }
+
+
+    DatosDash=async()=>{
+        let id = ""
         /*
-        this.setState({
-            id:this.props.location.id
-        })
-        this.DatosUser(this.props.location.id,this.props.location.Nombre)
-        this.DatosDash(this.props.location.id)
-        setInterval(() => {
-            this.DatosDash(this.props.location.id)
-        }, 10000);
+            {fuerza_imp: 12336, fecha: '2022-10-20T21:52:49.000Z', usuarioID: 1}
+            const url="http://localhost:4000/api/Proyecto2/FuerzaImp"
+            ritmo
+            const url="http://localhost:4000/api/Proyecto2/Ritmo"
+
+            //{caloriasQuem:14.99, fecha: fecha, usuarioId: 1}
+               //http sin la s (https) por aca
+            const url="http://localhost:4000/api/Proyecto2/Calorias"
         */
-    }
-    DatosUser=async(id,nombre)=>{
-        const url="http://localhost:4000/api/Practica2/DataUsu"
-        let config={
-           method:'GET',       //ELEMENTOS A ENVIAR
-               headers : { 
-                   'Content-Type': 'application/json',
-                   'Accept': 'application/json'
-               },
-       }
-       const res= await fetch(url,config)
-       const data_res =await res.json()
-       for(let i=0; i<data_res.length;i++){
-        if(data_res[i].usuarioID==id){
-            this.setState({
-                Nombre:nombre,
-                Edad:data_res[i].edad,
-                Peso:data_res[i].peso,
-                Estatura:data_res[i].estatura
-            })
-            if(data_res[i].genero==1){
-                this.setState({Genero:"Masculino"})
-            }else{
-                this.setState({Genero:"Femenino"})
-            }
-            break;
-        }
-       }
-      
-
-
-    }
-
-    DatosDash=async(id)=>{
-        console.log("aaaa")
         //Frecuencia: {pulsoCard: 150, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
         //Rango: {rango: 96, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
         //Calorias: {caloriasQuem: 14.83, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1
-        let n_entr=0
-        let tent=0  //aun no usado por falta de metodos backend
-        let rmax_mov=0
-        let prom_mov=0
+        let fimp=0
+        let ritmo_=0
+        let calorias_=0
 
-        const url="http://localhost:4000/api/Practica2/Frecuencia"
+        let url="http://localhost:4000/api/Proyecto2/FuerzaImp"
         let config={
             method:'GET',      
             headers : { 
@@ -227,61 +196,35 @@ export default class Principal extends Component{
                 'Accept': 'application/json'
             },
         }
-        const res= await fetch(url,config)
+        let res= await fetch(url,config)
         let data =await res.json()
+        console.log(data)
         data=this.clear_list(data,id)
-        n_entr+=data.length
+        fimp = data.length
         /* ------------------ */
-        const url2="http://localhost:4000/api/Practica2/Rango"
+        const url2="http://localhost:4000/api/Proyecto2/Ritmo"
         const res2= await fetch(url2,config)
         let data2 =await res2.json()
         data2=this.clear_list(data2,id)
         
-        n_entr+=data2.length
-          //rango maximo de movimiento
-        data2.forEach((e)=>{
-            if(e.rango>rmax_mov){
-                rmax_mov=e.rango
-            }
-            prom_mov+=e.rango
-        })
-        prom_mov=prom_mov/data2.length
-
-        this.setState({
-            rpromMov:prom_mov,
-            rmaxMov:rmax_mov
-        })
-
-
-
-        if(data2.length>0){
-            this.setState({
-                ritmo:data2[data2.length-1].ritmo_g
-            })
-        }
+        ritmo_=data2.length
         /* ------------------ */
-        const url3="http://localhost:4000/api/Practica2/Calorias"
+        const url3="http://localhost:4000/api/Proyecto2/Calorias"
         const res3= await fetch(url3,config)
         let data3 =await res3.json()
         data3=this.clear_list(data3,id)
-        n_entr+=data3.length
-        if(data3.length>0){
-            this.setState({
-                calQuem:data3[data3.length-1].caloriasQuem
-            })
-        }
-
+        calorias_=data3.length
+        
         this.setState({
-            nrep:n_entr
+            fimpulso: fimp,
+            ritmo: ritmo_,
+            calorias: calorias_,
+            Nent: fimp+ritmo_+calorias_
         })
+        
     }
     
     clear_list(array,id){
-        for(let i=array.length-1; i>=0;i--){
-            if (array[i].usuarioID!=id){
-                array.splice(i,1)
-            }
-        }  
         array=this.datos_rfecha(array)
         return array
     }

@@ -158,9 +158,9 @@ export default class Graficas extends Component{
                        
                         <div className="row mt-5" id="buttonsExp">
                             <div className="btn-group-vertical col-9" id="Exp-Component">
-                                <button className="btnEffect btn btn-dark" onClick={()=>this.FcvTiempo()} >Delta Fuerza</button>
-                                <button className="btnEffect btn btn-dark" onClick={()=>this.RmvTiempo()} >Delta Calorias</button>
-                                <button className="btnEffect btn btn-dark" onClick={()=>this.CalquemvTiempo()}>Tiempo Zona de Ritmo</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.FimpvTiempo()} >Delta Fuerza</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.CalquemvTiempo()} >Delta Calorias</button>
+                                <button className="btnEffect btn btn-dark" onClick={()=>this.RmvTiempo()}>Tiempo Zona de Ritmo</button>
                             </div>
                         </div>
                     </div>
@@ -177,11 +177,11 @@ export default class Graficas extends Component{
         ); 
   }
   componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
+    /*
     this.setState({
         Nombre:this.props.location.Nombre,
         id: this.props.location.id
-    })  
-    console.log(this.state.id)
+    }) */
     this.ActFechaM()
     this.actFecha()
   }
@@ -204,8 +204,17 @@ export default class Graficas extends Component{
     })
   }
   //---------------------------------------------------------------------------------------------//
-  FcvTiempo=async()=>{
-    const url="http://localhost:4000/api/Practica2/Frecuencia"
+  
+  /*
+    
+    
+    
+  
+  */
+  
+  FimpvTiempo=async()=>{
+   //{fuerza_imp: 12336, fecha: '2022-10-20T21:52:49.000Z', usuarioID: 1}
+    const url="http://localhost:4000/api/Proyecto2/FuerzaImp"
     let config={
         method:'GET',       //ELEMENTOS A ENVIAR
         headers : { 
@@ -216,7 +225,7 @@ export default class Graficas extends Component{
 
     const res= await fetch(url,config)
     const data_res =await res.json()
-    let datosGraph=this.datos_graphFc(data_res)
+    let datosGraph=this.datos_graphFimp(data_res)
    
     console.log(data_res)
     console.log(datosGraph)
@@ -225,7 +234,7 @@ export default class Graficas extends Component{
         labels:datosGraph[0], //cambiar esto 
         datasets:[
           {
-            label:"Pulso Cardiaco", //cambiar esto 
+            label:"Fuerza Impulso", //cambiar esto 
             data:  datosGraph[1], //cambiar esto 
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: ' rgba(255, 99, 132,1)',
@@ -272,7 +281,7 @@ export default class Graficas extends Component{
           },
           title: {
             display: true,
-            text: 'Frecuencia Cardiaca vs Tiempo', //cambia esto 
+            text: 'Fuerza de Impulso vs Tiempo', //cambia esto 
             color:"white"
             
           },
@@ -282,7 +291,9 @@ export default class Graficas extends Component{
   }
 
   RmvTiempo=async()=>{
-    const url="http://localhost:4000/api/Practica2/Rango"
+    //
+    console.log("respuesta dle server")
+    const url="http://localhost:4000/api/Proyecto2/Ritmo"
     let config={
         method:'GET',       //ELEMENTOS A ENVIAR
         headers : { 
@@ -293,6 +304,7 @@ export default class Graficas extends Component{
 
     const res= await fetch(url,config)
     const data_res =await res.json()
+    
     console.log(data_res)
     let datosGraph=this.datos_graphRm(data_res)
     this.setState({
@@ -300,7 +312,7 @@ export default class Graficas extends Component{
         labels:datosGraph[0], //cambiar esto 
         datasets:[
           {
-            label:" Rango", //cambiar esto 
+            label:"Ritmo", //cambiar esto 
             data:   datosGraph[1], //cambiar esto 
             borderColor: 'rgb(255, 99, 132)',
             backgroundColor: ' rgba(255, 99, 132,1)',
@@ -347,7 +359,7 @@ export default class Graficas extends Component{
           },
           title: {
             display: true,
-            text: 'Rango Movimiento vs Tiempo', //cambia esto 
+            text: 'Ritmo vs Tiempo', //cambia esto 
             color:"white"
             
           },
@@ -356,7 +368,9 @@ export default class Graficas extends Component{
     })  
   }
   CalquemvTiempo=async()=>{
-    const url="http://localhost:4000/api/Practica2/Calorias"
+     //{caloriasQuem:14.99, fecha: fecha, usuarioId: 1}
+               //http sin la s (https) por aca
+    const url="http://localhost:4000/api/Proyecto2/Calorias"
     let config={
         method:'GET',       //ELEMENTOS A ENVIAR
         headers : { 
@@ -435,7 +449,7 @@ export default class Graficas extends Component{
     })  
 }
 
-  datos_graphFc(datos){
+  datos_graphFimp(datos){
     let datos_g=[]
     let labels=[]
     let values=[]
@@ -453,12 +467,9 @@ export default class Graficas extends Component{
     
       let fecha=`${date_i.getFullYear()}-${mes}-${dia}`
       for(let i=0; i<datos.length;i++){
-        console.log(datos[i].usuarioID==this.state.id)
-        console.log(datos[i])
-        console.log(this.state.id)
-        console.log(datos[i].usuarioID)
+
         if (datos[i].fecha.includes(fecha) && datos[i].usuarioID==this.state.id){
-          values.push(datos[i].pulsoCard)
+          values.push(datos[i].fuerza_imp)
           labels.push(datos[i].fecha)
         }
       }
@@ -487,7 +498,7 @@ export default class Graficas extends Component{
       console.log(fecha)
       for(let i=0; i<datos.length;i++){
         if (datos[i].fecha.includes(fecha) && datos[i].usuarioID==this.state.id){
-          values.push(datos[i].rango)
+          values.push(datos[i].ritmo)
           labels.push(datos[i].fecha)
         }
       }
