@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.a8d1313b.css",
-    "main.js": "/static/js/main.c598b92b.js",
-    "static/js/787.2fc8d1f1.chunk.js": "/static/js/787.2fc8d1f1.chunk.js",
-    "static/media/fondo.jpg": "/static/media/fondo.b5de45c4712e59aa186e.jpg",
-    "static/media/calquem.png": "/static/media/calquem.c5fc9b46fcacd973d78e.png",
-    "static/media/cardio.png": "/static/media/cardio.315775a1f946c6923a3b.png",
-    "service-worker.js": "/service-worker.js",
-    "static/media/fast.png": "/static/media/fast.121dfb09fa8906a1c96f.png",
-    "static/media/ritmo.png": "/static/media/ritmo.431061fb9cc5563d130b.png",
-    "static/media/force.png": "/static/media/force.eb1fe0659733314105cd.png",
-    "static/media/time.png": "/static/media/time.a7a0c8448e57e8b634ed.png",
-    "index.html": "/index.html",
-    "main.a8d1313b.css.map": "/static/css/main.a8d1313b.css.map",
-    "main.c598b92b.js.map": "/static/js/main.c598b92b.js.map",
-    "787.2fc8d1f1.chunk.js.map": "/static/js/787.2fc8d1f1.chunk.js.map"
+    "main.css": "/Moonbbyte/ACE2_2S22_G1/static/css/main.2f0ae475.css",
+    "main.js": "/Moonbbyte/ACE2_2S22_G1/static/js/main.acbde604.js",
+    "static/js/787.2fc8d1f1.chunk.js": "/Moonbbyte/ACE2_2S22_G1/static/js/787.2fc8d1f1.chunk.js",
+    "static/media/fondo.jpg": "/Moonbbyte/ACE2_2S22_G1/static/media/fondo.b5de45c4712e59aa186e.jpg",
+    "static/media/calquem.png": "/Moonbbyte/ACE2_2S22_G1/static/media/calquem.c5fc9b46fcacd973d78e.png",
+    "static/media/cardio.png": "/Moonbbyte/ACE2_2S22_G1/static/media/cardio.315775a1f946c6923a3b.png",
+    "service-worker.js": "/Moonbbyte/ACE2_2S22_G1/service-worker.js",
+    "static/media/fast.png": "/Moonbbyte/ACE2_2S22_G1/static/media/fast.121dfb09fa8906a1c96f.png",
+    "static/media/ritmo.png": "/Moonbbyte/ACE2_2S22_G1/static/media/ritmo.431061fb9cc5563d130b.png",
+    "static/media/force.png": "/Moonbbyte/ACE2_2S22_G1/static/media/force.eb1fe0659733314105cd.png",
+    "static/media/time.png": "/Moonbbyte/ACE2_2S22_G1/static/media/time.a7a0c8448e57e8b634ed.png",
+    "index.html": "/Moonbbyte/ACE2_2S22_G1/index.html",
+    "main.2f0ae475.css.map": "/Moonbbyte/ACE2_2S22_G1/static/css/main.2f0ae475.css.map",
+    "main.acbde604.js.map": "/Moonbbyte/ACE2_2S22_G1/static/js/main.acbde604.js.map",
+    "787.2fc8d1f1.chunk.js.map": "/Moonbbyte/ACE2_2S22_G1/static/js/787.2fc8d1f1.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a8d1313b.css",
-    "static/js/main.c598b92b.js"
+    "static/css/main.2f0ae475.css",
+    "static/js/main.acbde604.js"
   ]
 }
