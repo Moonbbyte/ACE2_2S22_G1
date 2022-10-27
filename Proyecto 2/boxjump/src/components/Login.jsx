@@ -14,7 +14,7 @@ function Login (props){
       : <>{children}</>;
     
     const LogM=async(user,password)=>{
-        const url="http://localhost:4000/api/Practica2/Usuario"
+        const url="http://localhost:4000/api/Proyecto2/Usuario"
          let config={
             method:'GET',       //ELEMENTOS A ENVIAR
                 headers : { 

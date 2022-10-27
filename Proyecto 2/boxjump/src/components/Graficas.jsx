@@ -176,12 +176,11 @@ export default class Graficas extends Component{
             
         ); 
   }
-  componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
-    /*
+  componentDidMount() { 
     this.setState({
         Nombre:this.props.location.Nombre,
         id: this.props.location.id
-    }) */
+    }) 
     this.ActFechaM()
     this.actFecha()
   }
@@ -226,9 +225,7 @@ export default class Graficas extends Component{
     const res= await fetch(url,config)
     const data_res =await res.json()
     let datosGraph=this.datos_graphFimp(data_res)
-   
-    console.log(data_res)
-    console.log(datosGraph)
+  
     this.setState({
       Data:  {
         labels:datosGraph[0], //cambiar esto 
@@ -292,7 +289,7 @@ export default class Graficas extends Component{
 
   RmvTiempo=async()=>{
     //
-    console.log("respuesta dle server")
+
     const url="http://localhost:4000/api/Proyecto2/Ritmo"
     let config={
         method:'GET',       //ELEMENTOS A ENVIAR
@@ -304,8 +301,7 @@ export default class Graficas extends Component{
 
     const res= await fetch(url,config)
     const data_res =await res.json()
-    
-    console.log(data_res)
+
     let datosGraph=this.datos_graphRm(data_res)
     this.setState({
       Data:  {
@@ -382,8 +378,6 @@ export default class Graficas extends Component{
      //la forma en la que vienen los datos 
     const res= await fetch(url,config)
     const data_res =await res.json()
-    console.log(data_res)
-    console.log(typeof(data_res[0].fecha))
     let datosGraph=this.datos_graphCq(data_res)
     if (datosGraph[0].length==0){
       alert("No existen datos en esas fechas")

@@ -46,7 +46,7 @@ export default class Principal extends Component{
             </div>
          
             <button className="btn btn-dark btnEffect col-2"  id="UpdateDash" 
-            onClick={()=>{this.DatosDash()}}>Actualizar datos</button>
+            onClick={()=>{this.DatosDash(this.props.location.id)}}>Actualizar datos</button>
 
             <div className='container bg-dark col-3' id="RangoFecha">
                 <h5>Rango de Fecha: </h5>
@@ -166,12 +166,66 @@ export default class Principal extends Component{
 
     }
     componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
+        this.setState({id:this.props.location.id})
+        this.DatosUser(this.props.location.id,this.props.location.Nombre)
+        this.DatosDash(this.props.location.id)
     }
 
+    DatosUser=async(id,nombre)=>{
+        const url="http://localhost:4000/api/Proyecto2/DataUsu"
+        let config={
+           method:'GET',       //ELEMENTOS A ENVIAR
+               headers : { 
+                   'Content-Type': 'application/json',
+                   'Accept': 'application/json'
+               },
+       }
+       const res= await fetch(url,config)
+       const data_res =await res.json()
+       for(let i=0; i<data_res.length;i++){
+        if(data_res[i].usuarioID==id){
+            this.setState({
+                Nombre:nombre,
+                Edad:data_res[i].edad,
+                Peso:data_res[i].peso,
+                Estatura:data_res[i].estatura
+            })
+            if(data_res[i].genero==1){
+                this.setState({Genero:"Masculino"})
+            }else{
+                this.setState({Genero:"Femenino"})
+            }
+            break;
+        }
+       }
 
-    DatosDash=async()=>{
-        let id = ""
-        /*
+    }
+
+    DatosDash=async(id)=>{
+        //localhost:4000/api/Proyecto2/Peso
+        //peso,fecha,usuarioID
+    //localhost:4000/api/Proyecto2/DataUsu
+    /* 
+{edad: 23, peso: 190, genero: '1', estatura: 170, usuarioID: 1 */
+    //localhost:4000/api/Proyecto2/Usuario
+    //{nombreUsu,pass,id}
+        let urlp="http://localhost:4000/api/Proyecto2/Peso"
+        let configp={
+            method:'GET',      
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        }
+        let resp= await fetch(urlp,configp)
+        let datap =await resp.json()
+        let peso=datap[datap.length-1].peso
+        this.setState({
+            peso:peso
+        })
+        
+        /*  
+            {peso: 7364.87, fecha: '2022-10-25T03:23:33.000Z', usuarioID: 1}
             {fuerza_imp: 12336, fecha: '2022-10-20T21:52:49.000Z', usuarioID: 1}
             const url="http://localhost:4000/api/Proyecto2/FuerzaImp"
             ritmo
@@ -198,7 +252,7 @@ export default class Principal extends Component{
         }
         let res= await fetch(url,config)
         let data =await res.json()
-        console.log(data)
+    
         data=this.clear_list(data,id)
         fimp = data.length
         /* ------------------ */
@@ -225,13 +279,17 @@ export default class Principal extends Component{
     }
     
     clear_list(array,id){
+        for(let i=array.length-1; i>=0;i--){
+            if (array[i].usuarioID!=id){
+                array.splice(i,1)
+            }
+        }  
         array=this.datos_rfecha(array)
         return array
     }
 
     
     datos_rfecha(datos){
-        console.log(datos)
         let values=[]
         let date_i=new Date(this.state.dateInit.replace(/-/g, '\/'))
         let date_f=new Date(this.state.dateFinish.replace(/-/g, '\/'))    
@@ -254,6 +312,9 @@ export default class Principal extends Component{
         }  
         return values
     }
+    //localhost:4000/api/Proyecto2/Peso
+    //localhost:4000/api/Proyecto2/DataUsu
+    //localhost:4000/api/Proyecto2/Usuario
     //USUARIO:  id:1, nombreUsu: 'Juan', pass: '123'      http://
     //DataUsu:  edad: 25, peso:65, genero:'1', estatura:168,usuarioId:1    http://
     //Frecuencia: {pulsoCard: 150, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
