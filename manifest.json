@@ -1,0 +1,49 @@
+{
+  "name":"JumpBoxBurpees",
+  "short_name": "JumBoxBurpees",
+  "description":"Proyecto Numero 2 de Arquitectura de Computadores y Ensambladores 2, Grupo 2.",
+  "icons": [
+    {
+      "src": "favicon_16.png",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon_24.png",
+      "sizes": "24x24",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon_32.png",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon_64.png",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "favicon_192.ico",
+      "type": "image/png",
+      "sizes": "192x192"
+    },{
+      "src": "favicon_256.ico",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "favicon_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "display": "standalone",
+  "start_url":".",
+  "scope":"/",
+  "theme_color": "#000000",
+  "background_color": "#00304E",
+  "orientation":"landscape",
+  "lang":"es-MX"
+}
+

@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/ACE2_2S22_G1/static/css/main.b115876e.css",
+    "main.js": "/ACE2_2S22_G1/static/js/main.32638b1c.js",
+    "static/js/787.2fc8d1f1.chunk.js": "/ACE2_2S22_G1/static/js/787.2fc8d1f1.chunk.js",
+    "static/media/fondo.jpg": "/ACE2_2S22_G1/static/media/fondo.b5de45c4712e59aa186e.jpg",
+    "static/media/calquem.png": "/ACE2_2S22_G1/static/media/calquem.c5fc9b46fcacd973d78e.png",
+    "static/media/cardio.png": "/ACE2_2S22_G1/static/media/cardio.315775a1f946c6923a3b.png",
+    "service-worker.js": "/ACE2_2S22_G1/service-worker.js",
+    "static/media/fast.png": "/ACE2_2S22_G1/static/media/fast.121dfb09fa8906a1c96f.png",
+    "static/media/ritmo.png": "/ACE2_2S22_G1/static/media/ritmo.431061fb9cc5563d130b.png",
+    "static/media/force.png": "/ACE2_2S22_G1/static/media/force.eb1fe0659733314105cd.png",
+    "static/media/time.png": "/ACE2_2S22_G1/static/media/time.a7a0c8448e57e8b634ed.png",
+    "index.html": "/ACE2_2S22_G1/index.html",
+    "main.b115876e.css.map": "/ACE2_2S22_G1/static/css/main.b115876e.css.map",
+    "main.32638b1c.js.map": "/ACE2_2S22_G1/static/js/main.32638b1c.js.map",
+    "787.2fc8d1f1.chunk.js.map": "/ACE2_2S22_G1/static/js/787.2fc8d1f1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b115876e.css",
+    "static/js/main.32638b1c.js"
+  ]
+}
