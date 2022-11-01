@@ -14,7 +14,7 @@ function Login (props){
       : <>{children}</>;
     
     const LogM=async(user,password)=>{
-        const url="http://localhost:4000/api/Practica2/Usuario"
+        const url="http://localhost:4000/api/Proyecto2/Usuario"
          let config={
             method:'GET',       //ELEMENTOS A ENVIAR
                 headers : { 
@@ -40,7 +40,7 @@ function Login (props){
     
     return(
         <React.Fragment>
-        <header align="center"><h1>FlexBar Login</h1></header>
+        <header align="center"><h1>Box Jump Burpees</h1></header>
             <div className="container col-6 mx-auto text-center">
             <form className="">
                 <label className="row">

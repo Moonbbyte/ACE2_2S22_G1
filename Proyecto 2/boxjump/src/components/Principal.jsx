@@ -9,26 +9,28 @@ export default class Principal extends Component{
     constructor() {
         super();
         this.state={
-            Nombre:"Default",
-            Edad:"18",
+            Nombre:"Osmar Peña",
+            Edad:"21",
             Peso:"150",
             Genero:"Masculino",
             Estatura:"1.82",
-            dateInit:"2022-09-30",
-            dateFinish:"2022-10-02",
+            dateInit:"2022-10-20",
+            dateFinish:"2022-10-22",
             //Tiempo total de entrenamiento
-            nrep:10, //numero de repeticiones
-            rmaxMov:0,
-            calQuem:13,
-            tent: 8,
-            rpromMov:12,
+            Nent: 8,
+            tent: "30min",
+            fimpulso: 123,
+            vimpulso:0,
+            ritmo:13,
+            calorias:12,
+            peso:16,
             id:-1
         }
     }
     render(){
         return(
             <React.Fragment>
-            <header align="center"><h1>FlexBar</h1></header>
+            <header align="center"><h1>Box Jump Burpees</h1></header>
             <Link id="BtnGraph" className="btn btn-dark btnEffect" to={{pathname: `/gAux`}}
                         state={this.state}>Graficas</Link>
             <Link id="BtnLogOut" to="/" className="btn btn-dark btnEffect" >LogOut</Link>
@@ -42,9 +44,14 @@ export default class Principal extends Component{
                 <h5>Genero: {this.state.Genero}</h5>
                 <h5>Estatura: {this.state.Estatura} </h5>
             </div>
+         
+            <button className="btn btn-dark btnEffect col-2"  id="UpdateDash" 
+            onClick={()=>{this.DatosDash(this.props.location.id)}}>Actualizar datos</button>
+
             <div className='container bg-dark col-3' id="RangoFecha">
                 <h5>Rango de Fecha: </h5>
                 <hr></hr>
+                
                 <div className='row'> Inicio:</div>
                 <div className='row'>
                     <input type="date" id="fechaInit" className="btn btn-dark col-9" min="2020-01-01" max="2023-12-31"
@@ -61,60 +68,97 @@ export default class Principal extends Component{
                 
             </div>
             <div className='container bg-dark col-8' id="Dashboard">
-                <div className="row">
+               <div className="row">
                     <div className="col-6">
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Numero de Repeticiones</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.nrep}</h4>
-                            </div>
-                        </div>
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Rango Maximo de Movimiento</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.rmaxMov}</h4>
-                            </div>
-                        </div>
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Calorias Quemadas</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.calQuem}</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-6">
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Tiempo total de entrenamiento</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.tent}</h4>
-                            </div>
-                        </div>
-                        <div className="row mb-5">
-                            <div className="row">
-                                <h4>Rango Promedio de Movimiento</h4>
-                                <hr></hr>
-                            </div>
-                            <div className="row">
-                                <h4 align="center">{this.state.rpromMov}</h4>
-                            </div>
-                        </div>
+                        <h4>Tiempo total de Entrenamiento</h4>
+                        <hr />
                         <div className="row">
-                            <img  src={require("../images/flex.png")} width="100%" height="100%" />
+                            <div className="col-6">
+                                <img  width="80%" height="80%" src={require("../images/time.png")}    />
+                            </div>
+                            <div className="col-6">
+                                {this.state.tent}
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div className="col-6">
+                        <h4>Numero total de entrenamientos</h4>
+                        <hr />
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="80%" height="80%" src={require("../images/boxjump.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.Nent}
+                            </div>
+                        </div>
+                    </div>
+               </div>
+               <div className="row">
+                    <div className="col-4">
+                        <h5>Fuerza de Impulso</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="50%" height="60%" src={require("../images/force.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.fimpulso}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <h5>Velocidad de Impulso</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="50%" height="60%" src={require("../images/fast.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.vimpulso}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-4">
+                        <h5>Ritmo</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="50%" height="60%" src={require("../images/ritmo.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.ritmo}
+                            </div>
+                        </div>
+                    </div>
+               </div>
+               <div className="row">
+                    <div className="col-4">
+                        <h5>Calorias</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="40%" height="60%" src={require("../images/calquem.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.calorias}
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div className="col-4">
+                        <h5>Peso</h5>
+                        <hr></hr>
+                        <div className="row">
+                            <div className="col-6">
+                                <img width="50%" height="60%" src={require("../images/cardio.png")} />
+                            </div>
+                            <div className="col-6">
+                                {this.state.peso}
+                            </div>
+                        </div>
+                    </div>
+               </div>
             </div>
             </React.Fragment> 
         )
@@ -122,18 +166,13 @@ export default class Principal extends Component{
 
     }
     componentDidMount() { /*SE EJECUTA AL INICIO O AL RECARGAR PAGINA */
-        this.setState({
-            id:this.props.location.id
-        })
+        this.setState({id:this.props.location.id})
         this.DatosUser(this.props.location.id,this.props.location.Nombre)
         this.DatosDash(this.props.location.id)
-        setInterval(() => {
-            this.DatosDash(this.props.location.id)
-        }, 10000);
-        
     }
+
     DatosUser=async(id,nombre)=>{
-        const url="http://localhost:4000/api/Practica2/DataUsu"
+        const url="http://localhost:4000/api/Proyecto2/DataUsu"
         let config={
            method:'GET',       //ELEMENTOS A ENVIAR
                headers : { 
@@ -159,22 +198,51 @@ export default class Principal extends Component{
             break;
         }
        }
-      
-
 
     }
 
     DatosDash=async(id)=>{
-        console.log("aaaa")
+        //localhost:4000/api/Proyecto2/Peso
+        //peso,fecha,usuarioID
+    //localhost:4000/api/Proyecto2/DataUsu
+    /* 
+{edad: 23, peso: 190, genero: '1', estatura: 170, usuarioID: 1 */
+    //localhost:4000/api/Proyecto2/Usuario
+    //{nombreUsu,pass,id}
+        let urlp="http://localhost:4000/api/Proyecto2/Peso"
+        let configp={
+            method:'GET',      
+            headers : { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+        }
+        let resp= await fetch(urlp,configp)
+        let datap =await resp.json()
+        let peso=datap[datap.length-1].peso
+        this.setState({
+            peso:peso
+        })
+        
+        /*  
+            {peso: 7364.87, fecha: '2022-10-25T03:23:33.000Z', usuarioID: 1}
+            {fuerza_imp: 12336, fecha: '2022-10-20T21:52:49.000Z', usuarioID: 1}
+            const url="http://localhost:4000/api/Proyecto2/FuerzaImp"
+            ritmo
+            const url="http://localhost:4000/api/Proyecto2/Ritmo"
+
+            //{caloriasQuem:14.99, fecha: fecha, usuarioId: 1}
+               //http sin la s (https) por aca
+            const url="http://localhost:4000/api/Proyecto2/Calorias"
+        */
         //Frecuencia: {pulsoCard: 150, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
         //Rango: {rango: 96, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
         //Calorias: {caloriasQuem: 14.83, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1
-        let n_entr=0
-        let tent=0  //aun no usado por falta de metodos backend
-        let rmax_mov=0
-        let prom_mov=0
+        let fimp=0
+        let ritmo_=0
+        let calorias_=0
 
-        const url="http://localhost:4000/api/Practica2/Frecuencia"
+        let url="http://localhost:4000/api/Proyecto2/FuerzaImp"
         let config={
             method:'GET',      
             headers : { 
@@ -182,53 +250,32 @@ export default class Principal extends Component{
                 'Accept': 'application/json'
             },
         }
-        const res= await fetch(url,config)
+        let res= await fetch(url,config)
         let data =await res.json()
+    
         data=this.clear_list(data,id)
-        n_entr+=data.length
+        fimp = data.length
         /* ------------------ */
-        const url2="http://localhost:4000/api/Practica2/Rango"
+        const url2="http://localhost:4000/api/Proyecto2/Ritmo"
         const res2= await fetch(url2,config)
         let data2 =await res2.json()
         data2=this.clear_list(data2,id)
         
-        n_entr+=data2.length
-          //rango maximo de movimiento
-        data2.forEach((e)=>{
-            if(e.rango>rmax_mov){
-                rmax_mov=e.rango
-            }
-            prom_mov+=e.rango
-        })
-        prom_mov=prom_mov/data2.length
-
-        this.setState({
-            rpromMov:prom_mov,
-            rmaxMov:rmax_mov
-        })
-
-
-
-        if(data2.length>0){
-            this.setState({
-                ritmo:data2[data2.length-1].ritmo_g
-            })
-        }
+        ritmo_=data2.length
         /* ------------------ */
-        const url3="http://localhost:4000/api/Practica2/Calorias"
+        const url3="http://localhost:4000/api/Proyecto2/Calorias"
         const res3= await fetch(url3,config)
         let data3 =await res3.json()
         data3=this.clear_list(data3,id)
-        n_entr+=data3.length
-        if(data3.length>0){
-            this.setState({
-                calQuem:data3[data3.length-1].caloriasQuem
-            })
-        }
-
+        calorias_=data3.length
+        
         this.setState({
-            nrep:n_entr
+            fimpulso: fimp,
+            ritmo: ritmo_,
+            calorias: calorias_,
+            Nent: fimp+ritmo_+calorias_
         })
+        
     }
     
     clear_list(array,id){
@@ -243,7 +290,6 @@ export default class Principal extends Component{
 
     
     datos_rfecha(datos){
-        console.log(datos)
         let values=[]
         let date_i=new Date(this.state.dateInit.replace(/-/g, '\/'))
         let date_f=new Date(this.state.dateFinish.replace(/-/g, '\/'))    
@@ -266,6 +312,9 @@ export default class Principal extends Component{
         }  
         return values
     }
+    //localhost:4000/api/Proyecto2/Peso
+    //localhost:4000/api/Proyecto2/DataUsu
+    //localhost:4000/api/Proyecto2/Usuario
     //USUARIO:  id:1, nombreUsu: 'Juan', pass: '123'      http://
     //DataUsu:  edad: 25, peso:65, genero:'1', estatura:168,usuarioId:1    http://
     //Frecuencia: {pulsoCard: 150, fecha: '2022-10-01T21:24:35.000Z', usuarioID: 1}
